@@ -3,7 +3,13 @@ import ConnectionForm from './presentationals/ConnectionForm'
 import Title from './presentationals/Title'
 
 export default class App extends Component {
-  render() {
+
+  login (username, password) {
+    console.log(username)
+    console.log(password)
+  }
+
+  render () {
     return (
       <div>
         <div className="row">
@@ -12,7 +18,8 @@ export default class App extends Component {
         </div>
         <div>
           <ConnectionForm
-          styleRoot='col-md-6 col-md-offset-3'/>
+          styleRoot='col-md-6 col-md-offset-3'
+          onSubmit={this.login}/>
         </div>
       </div>
     )
