@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import ConnectionForm from './presentationals/ConnectionForm'
+import CreationUserForm from './presentationals/CreationUserForm'
 import Title from './presentationals/Title'
 
 export default class App extends Component {
 
-  login (username, password) {
-    console.log(username)
+  login (email, password) {
+    console.log(email)
     console.log(password)
   }
 
@@ -17,7 +18,7 @@ export default class App extends Component {
           styleRoot='col-md-6 col-md-offset-3' />
         </div>
         <div>
-          <ConnectionForm
+          <CreationUserForm
           styleRoot='col-md-6 col-md-offset-3'
           onSubmit={this.login}/>
         </div>

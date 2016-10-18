@@ -4,7 +4,7 @@ export default class ConnectionForm extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      username: '',
+      email: '',
       password: ''
     }
   }
@@ -18,13 +18,13 @@ export default class ConnectionForm extends Component {
       <div className="panel panel-default">
       <div className="panel-body">
         <div className="form-group">
-          <label htmlFor="inputUsername">Nom d'utilisateur</label>
-          <input type="text" className="form-control" id="inputUsername" placeholder="Nom d'utilisateur"
-          onChange={(e) => { this.setState({ username: e.target.value })} }/>
+          <label htmlFor="inputEmail">E-mail</label>
+          <input type="text" className="form-control" id="inputEmail" placeholder="E-mail"
+          onChange={(e) => { this.setState({ email: e.target.value })} }/>
         </div>
         <div className="form-group">
-          <label htmlFor="inuputPassword">Mot de passe</label>
-          <input type="password" className="form-control" id="inuputPassword" placeholder="Mot de passe"
+          <label htmlFor="inputPassword">Mot de passe</label>
+          <input type="password" className="form-control" id="inputPassword" placeholder="Mot de passe"
           onChange={(e) => { this.setState({ password: e.target.value })} }/>
         </div>
         <button type="submit" className="btn btn-success btn-block">Valider</button>
