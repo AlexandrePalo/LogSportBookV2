@@ -2,11 +2,14 @@ import React, { Component } from 'react'
 import $ from 'jquery'
 import datetimepicker from 'eonasdan-bootstrap-datetimepicker'
 import { ddmmyyyyStrDate } from '../../utils/date'
+import 'whatwg-fetch'
+import { api } from '../../utils/api'
 
 export default class CreationUserForm extends Component {
   constructor (props) {
     super(props)
     this.renderDateTimePicker = this.renderDateTimePicker.bind(this)
+    this.createUser = this.createUser.bind(this)
     this.state = {
       email: '',
       password: '',
@@ -29,10 +32,14 @@ export default class CreationUserForm extends Component {
     })
   }
 
+  createUser () {
+    // Use Redux action !
+  }
+
   render () {
     return (
       <form className={this.props.styleRoot}
-      onSubmit={() => { this.props.onSubmit(this.state) }}>
+      onSubmit={this.createUser}>
         <div className="panel panel-default">
           <div className="panel-body">
             <div className="form-group">
