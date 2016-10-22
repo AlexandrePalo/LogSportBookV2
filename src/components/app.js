@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
 import ConnectionForm from './presentationals/ConnectionForm'
 import CreationUserForm from './presentationals/CreationUserForm'
-import Title from './presentationals/Title'
+import ExerciceBlock from './presentationals/ExerciceBlock'
 
 export default class App extends Component {
 
-  login (email, password) {
-    // Login
-  }
-
   render () {
+    const exerciseBlock = {
+      exercise: {name: 'Développé couché', id: 'hbfujdieib'},
+      series: [
+        {
+          id: 'iuhhvcjeko',
+          load: 10,
+          repetition: 80
+        },
+        {
+          id: 'hgfcvbn',
+          load: 8,
+          repetition: 100
+        }
+      ]
+    }
     return (
       <div>
-        <div className="row">
-          <Title
-          styleRoot='col-md-6 col-md-offset-3' />
-        </div>
         <div>
-          <CreationUserForm
-          styleRoot='col-md-6 col-md-offset-3'
-          onSubmit={this.login}/>
+          <ExerciceBlock
+          styleRoot='col-md-12'
+          exerciseBlock={exerciseBlock}/>
         </div>
       </div>
     )

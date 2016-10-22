@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 export default class Serie extends Component {
+  // Connect: serie, delete
+
   constructor (props) {
     super(props)
     this.state = {
