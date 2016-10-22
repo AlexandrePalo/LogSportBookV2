@@ -12,7 +12,6 @@ export default class ExerciceBlock extends Component {
   }
 
   render () {
-    console.log(this.props.exerciseBlock.series)
     const seriesComponents = this.state.series.map((serie) => {
       return (
         <Serie key={serie.id} serie={serie} />

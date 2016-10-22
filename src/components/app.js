@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import ConnectionForm from './presentationals/ConnectionForm'
-import CreationUserForm from './presentationals/CreationUserForm'
 import ExerciceBlock from './presentationals/ExerciceBlock'
+import SerieForm from './presentationals/SerieForm'
 
 export default class App extends Component {
 
@@ -28,6 +27,8 @@ export default class App extends Component {
           styleRoot='col-md-12'
           exerciseBlock={exerciseBlock}/>
         </div>
+        <SerieForm
+        styleRoot='col-md-3 col-md-offset-3'/>
       </div>
     )
   }
