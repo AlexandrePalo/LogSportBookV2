@@ -27,8 +27,6 @@ export default class App extends Component {
           styleRoot='col-md-12'
           exerciseBlock={exerciseBlock}/>
         </div>
-        <SerieForm
-        styleRoot='col-md-3 col-md-offset-3'/>
       </div>
     )
   }

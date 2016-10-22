@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Serie from './Serie'
+import SerieForm from './SerieForm'
 
 export default class ExerciceBlock extends Component {
   // Connect: exerciseBlock
@@ -11,6 +12,10 @@ export default class ExerciceBlock extends Component {
     }
   }
 
+  finish () {
+    // Finish the exerciseBlock
+  }
+
   render () {
     const seriesComponents = this.state.series.map((serie) => {
       return (
@@ -19,6 +24,7 @@ export default class ExerciceBlock extends Component {
     })
     return (
       <div className={this.props.styleRoot}>
+      <div className='row'>
         <h2>{this.props.exerciseBlock.exercise.name}</h2>
         <table className='table table-striped table-hover'>
           <tbody>
@@ -26,6 +32,17 @@ export default class ExerciceBlock extends Component {
           </tbody>
         </table>
       </div>
+      <div className='row'>
+        <SerieForm
+        exerciseBlock={this.props.exerciseBlock}
+        styleRoot='col-md-4'/>
+        <div className='col-md-4'>
+          <button className='btn btn-danger btn-block'
+          onPress={this.finish}>Terminer l'exercice</button>
+        </div>
+      </div>
+      </div>
+
     )
   }
 }
