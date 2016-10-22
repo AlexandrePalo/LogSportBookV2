@@ -6,8 +6,7 @@ import Title from './presentationals/Title'
 export default class App extends Component {
 
   login (email, password) {
-    console.log(email)
-    console.log(password)
+    // Login
   }
 
   render () {

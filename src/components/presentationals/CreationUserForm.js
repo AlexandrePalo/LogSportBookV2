@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import $ from 'jquery'
 import datetimepicker from 'eonasdan-bootstrap-datetimepicker'
 import { ddmmyyyyStrDate } from '../../utils/date'
-import 'whatwg-fetch'
-import { api } from '../../utils/api'
 
 export default class CreationUserForm extends Component {
   constructor (props) {
@@ -33,7 +31,7 @@ export default class CreationUserForm extends Component {
   }
 
   createUser () {
-    // Use Redux action !
+    // Go to CreationUserForm
   }
 
   render () {
