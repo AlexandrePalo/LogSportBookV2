@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import ExerciceBlock from './presentationals/ExerciceBlock'
+import TrainingBoard from './presentationals/TrainingBoard'
 import SerieForm from './presentationals/SerieForm'
+
+import moment from 'moment'
 
 export default class App extends Component {
 
   render () {
-    const exerciseBlock = {
+    const exerciseBlock1 = {
+      id: 'vbhjikozknjbn',
       exercise: {name: 'Développé couché', id: 'hbfujdieib'},
       series: [
         {
@@ -20,12 +23,22 @@ export default class App extends Component {
         }
       ]
     }
+
+    const training = {
+      id: 'nbvcrtyuiop',
+      date_begin: moment('2016-10-22 18:00:00'),
+      date_end: moment('2016-10-22 20:00:00'),
+      place: 'BasicFit Metz Technopôle',
+      exerciseBlocks : [
+        exerciseBlock1
+      ]
+    }
     return (
       <div>
         <div>
-          <ExerciceBlock
+          <TrainingBoard
           styleRoot='col-md-12'
-          exerciseBlock={exerciseBlock}/>
+          training={training}/>
         </div>
       </div>
     )

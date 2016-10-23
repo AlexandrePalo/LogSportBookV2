@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Serie from './Serie'
 import SerieForm from './SerieForm'
 
-export default class ExerciceBlock extends Component {
+export default class ExerciseBlockBoard extends Component {
   // Connect: exerciseBlock
 
   constructor (props) {
