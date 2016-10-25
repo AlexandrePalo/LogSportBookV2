@@ -4,7 +4,8 @@ const ExerciseBlock = ({
   name,
   numberSeries,
   duration,
-  id
+  id,
+  onDelete,
 }) => {
   return (
     <tr>
