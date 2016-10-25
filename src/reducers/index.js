@@ -1,7 +1,9 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
+import { trainings, visibilityFilter } from './trainings'
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
-});
+  trainings,
+  visibilityFilter,
+})
 
-export default rootReducer;
+export default rootReducer
