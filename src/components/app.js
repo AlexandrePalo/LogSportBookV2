@@ -3,15 +3,21 @@ import TrainingBoard from './presentationals/TrainingBoard'
 import SerieForm from './presentationals/SerieForm'
 import moment from 'moment'
 
-export default class App extends Component {
+import Header from './presentationals/Header'
 
+export default class App extends Component {
+  onClickSettings () {
+    console.log("on click settings")
+  }
+  
   render () {
     return (
       <div>
         <div>
-          <TrainingBoard
-            styleRoot='col-md-12'
-          />
+          <Header
+          first_name="Alexandre"
+          avatar="LogoAlex"
+          onClickSettings={this.onClickSettings}/>
         </div>
       </div>
     )
