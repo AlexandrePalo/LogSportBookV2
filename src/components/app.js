@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TrainingBoard from './presentationals/TrainingBoard'
+import VisibleTrainingBoard from './containers/VisibleTrainingBoard'
 import SerieForm from './presentationals/SerieForm'
 import moment from 'moment'
 
@@ -11,20 +12,6 @@ export default class App extends Component {
   }
 
   render () {
-    let exerciseBlocks = [
-      {
-        id: 1,
-        ns: 4,
-        d: 20,
-        name: "Développé couché"
-      },
-      {
-        id: 2,
-        ns: 5,
-        d: 25,
-        name: "Dips"
-      }
-    ]
     return (
       <div>
         <div>
@@ -33,11 +20,7 @@ export default class App extends Component {
           avatar="LogoAlex"
           onClickSettings={this.onClickSettings}/>
           <div className="container">
-            <TrainingBoard
-              id="1"
-              description="pectoraux"
-              exerciseBlocks={exerciseBlocks}
-            />
+            <VisibleTrainingBoard />
           </div>
         </div>
       </div>
