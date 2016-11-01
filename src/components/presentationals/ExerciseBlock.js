@@ -13,7 +13,7 @@ const ExerciseBlock = ({
       <td>{name}</td>
       <td>{numberSeries}</td>
       <td>{duration}</td>
-      <td onPress={() => onDelete(id)}>X</td>
+      <td onClick={() => onDelete(id)}>X</td>
     </tr>
   )
 }

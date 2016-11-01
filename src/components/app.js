@@ -9,8 +9,22 @@ export default class App extends Component {
   onClickSettings () {
     console.log("on click settings")
   }
-  
+
   render () {
+    let exerciseBlocks = [
+      {
+        id: 1,
+        ns: 4,
+        d: 20,
+        name: "Développé couché"
+      },
+      {
+        id: 2,
+        ns: 5,
+        d: 25,
+        name: "Dips"
+      }
+    ]
     return (
       <div>
         <div>
@@ -18,6 +32,13 @@ export default class App extends Component {
           first_name="Alexandre"
           avatar="LogoAlex"
           onClickSettings={this.onClickSettings}/>
+          <div className="container">
+            <TrainingBoard
+              id="1"
+              description="pectoraux"
+              exerciseBlocks={exerciseBlocks}
+            />
+          </div>
         </div>
       </div>
     )
