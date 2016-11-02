@@ -1,18 +1,3 @@
-const initialExercises = [
-  {
-    id: 1,
-    name: 'Développé couché'
-  },
-  {
-    id: 2,
-    name: 'Dips'
-  },
-  {
-    id: 3,
-    name: 'Poulies hautes'
-  }
-]
-
 const exercise = (state, action) => {
   switch (action.type) {
     default:
@@ -20,9 +5,15 @@ const exercise = (state, action) => {
   }
 }
 
-export const exercises = (state = initialExercises, action) => {
+const exercises = (state = {}, action) => {
   switch (action.type) {
     default:
       return state
   }
+}
+
+export default exercises
+
+export const getAllExercises = (state) => {
+  return state.allIds.map(id => state.byId[id])
 }
