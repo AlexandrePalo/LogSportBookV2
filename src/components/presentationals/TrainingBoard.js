@@ -12,12 +12,12 @@ class TrainingBoard extends Component {
     return (
       <div>
         <div className='row'>
-          <h1>Training n°{this.props.id}, {this.props.description}</h1>
+          <h1>Training n°{props.id}, {props.description}</h1>
         </div>
         <div className='row'>
           <table className='table table-striped table-hover'>
             <tbody>
-              {this.props.exerciseBlocks.map(elem =>
+              {props.exerciseBlocks.map(elem =>
                 <ExerciseBlock
                   name={elem.name}
                   numberSeries={elem.ns}

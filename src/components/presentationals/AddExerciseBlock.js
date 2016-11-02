@@ -1,27 +1,28 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const AddExerciseBlock = ({
-  dispatch
-}) => {
-  let inputExercise
-  return (
-    <div>
-      <select ref={node => {
-        inputExercise = node
-      }}>
-        <option value='1'>Option 1</option>
-        <option value='2'>Option 2</option>
-        <option value='3'>Option 3</option>
-      </select>
-      <button className='btn btn-primary' onClick={() => {
-        dispatch({
-          type: 'ADD_EXERCISEBLOCK',
-          id: 1,
-          exercise: inputExercise.value
-        })
-      }}>Nouvel exercice</button>
-    </div>
-  )
+class AddExerciseBlock extends Component {
+  render () {
+    let inputExercise
+    const props = this.props
+    return (
+      <div>
+        <select ref={node => {
+          inputExercise = node
+        }}>
+          {props.exercises.map((e) => {
+            return (<option value={e.id}>{e.name}</option>)
+          })}
+        </select>
+        <button className='btn btn-primary' onClick={() => {
+          props.dispatch({
+            type: 'ADD_EXERCISEBLOCK',
+            id: 1,
+            exercise: inputExercise.value
+          })
+        }}>Nouvel exercice</button>
+      </div>
+    )
+  }
 }
 
 export default AddExerciseBlock
