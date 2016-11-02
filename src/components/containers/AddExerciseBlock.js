@@ -4,6 +4,7 @@ import { getAllExercises } from '../../reducers/index'
 
 const mapStateToProps = (state) => {
   return {
+    byId: state.exercises.byId,
     exercises: getAllExercises(state)
   }
 }

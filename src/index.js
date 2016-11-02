@@ -17,13 +17,19 @@ const persistedState = {
             id: 1,
             ns: 4,
             d: 20,
-            name: "Développé couché"
+            exercise: {
+              id: 1,
+              name: 'Développé couché'
+            }
           },
           {
             id: 2,
             ns: 5,
             d: 25,
-            name: "Dips"
+            exercise: {
+              id: 2,
+              name: 'Dips'
+            }
           }
         ]
       }

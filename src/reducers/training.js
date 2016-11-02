@@ -22,7 +22,7 @@ const training = (state, action) => {
             id: nextExerciseBlockId++,
             ns: 4,
             d: 20,
-            name: action.exercise
+            exercise: action.exercise
           }
         ]
       })

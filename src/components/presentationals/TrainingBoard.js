@@ -19,7 +19,7 @@ class TrainingBoard extends Component {
             <tbody>
               {props.exerciseBlocks.map(elem =>
                 <ExerciseBlock
-                  name={elem.name}
+                  exercise={elem.exercise}
                   numberSeries={elem.ns}
                   duration={elem.d}
                   id={elem.id}

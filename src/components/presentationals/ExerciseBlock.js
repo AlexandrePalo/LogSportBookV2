@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ExerciseBlock = ({
-  name,
+  exercise,
   numberSeries,
   duration,
   id,
@@ -10,7 +10,7 @@ const ExerciseBlock = ({
   return (
     <tr>
       <td>V</td>
-      <td>{name}</td>
+      <td>{exercise.name}</td>
       <td>{numberSeries}</td>
       <td>{duration}</td>
       <td onClick={() => onDelete(id)}>X</td>
