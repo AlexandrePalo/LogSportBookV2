@@ -10,7 +10,7 @@ class AddExerciseBlock extends Component {
           inputExercise = node
         }}>
           {props.exercises.map((e) => {
-            return (<option value={e.id}>{e.name}</option>)
+            return (<option value={e.id} key={e.id}>{e.name}</option>)
           })}
         </select>
         <button className='btn btn-primary' onClick={() => {

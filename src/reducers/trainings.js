@@ -1,7 +1,8 @@
-import { ADD_TRAINING } from '../actions/actionTypes'
+import { combineReducers } from 'redux'
+import training from './training'
 
-const initialTrainings = [
-  {
+const initialTrainings = {
+  1: {
     id: 1,
     description: 'pectoraux',
     exerciseBlocks : [
@@ -19,50 +20,36 @@ const initialTrainings = [
       }
     ]
   }
-]
-let nextTrainingId = 2
-let nextExerciseBlockId = 3
+}
 
-const training = (state, action) => {
+const byId = (state = initialTrainings, action) => {
   switch (action.type) {
+    case 'ADD_EXERCISEBLOCK':
     case 'ADD_TRAINING':
       return {
-        id: action.id,
-        description: action.description,
-        place: action.place,
-        date_begin: action.date_begin,
-        date_end: action.date_end
+        ...state,
+        [action.id]: training(state[action.id], action)
       }
-    case 'ADD_EXERCISEBLOCK':
-      if (state.id !== action.id) {
-        return state
-      }
-      return Object.assign({}, state, {
-        exerciseBlocks: [
-          ...state.exerciseBlocks,
-          {
-            id: nextExerciseBlockId++,
-            exercise: action.exercise
-          }
-        ]
-      })
     default:
       return state
   }
 }
 
-export const trainings = (state = initialTrainings, action) => {
+const allIds = (state = [1], action) => {
   switch (action.type) {
     case 'ADD_TRAINING':
-      return [
-        ...state,
-        training(undefined, action)
-      ]
-    case 'ADD_EXERCISEBLOCK':
-      return state.map(t => training(t, action))
+      return [...state, action.id]
     default:
       return state
   }
+}
+
+const getAllTrainings = (state) => {
+  return state.allIds.map(id => state.byId[id])
+}
+
+export const getVisibleTraining = (state, filter) => {
+  return state.byId[filter]
 }
 
 export const visibilityFilter = (state = 1, action) => {
@@ -73,3 +60,10 @@ export const visibilityFilter = (state = 1, action) => {
       return state
   }
 }
+
+const trainings = combineReducers({
+  byId,
+  allIds
+})
+
+export default trainings
