@@ -17,21 +17,9 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onAdd: (exercise) =>{
-      dispatch({
-        type: 'ADD_EXERCISEBLOCK',
-        exercise,
-        id: 1
-      })
-    }
-  }
-}
-
 const VisibleTrainingBoard = connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(TrainingBoard)
 
 export default VisibleTrainingBoard

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ExerciseBlock from './ExerciseBlock'
 import ExerciseBlockForm from './ExerciseBlockForm'
 import moment from 'moment'
-import AddExerciseBlock from './AddExerciseBlock'
+import AddExerciseBlock from '../containers/AddExerciseBlock'
 
 var nextTrainingId = 1
 
@@ -31,8 +31,7 @@ class TrainingBoard extends Component {
           </table>
         </div>
         <div className='row'>
-          <AddExerciseBlock
-          onAdd={(exercise) => props.onAdd(exercise)}/>
+          <AddExerciseBlock />
         </div>
       </div>
     )

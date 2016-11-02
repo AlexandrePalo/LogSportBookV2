@@ -1,7 +1,7 @@
 import React from 'react'
 
 const AddExerciseBlock = ({
-  onAdd
+  dispatch
 }) => {
   let inputExercise
   return (
@@ -13,7 +13,13 @@ const AddExerciseBlock = ({
         <option value='2'>Option 2</option>
         <option value='3'>Option 3</option>
       </select>
-      <button className='btn btn-primary' onClick={() => onAdd(inputExercise.value)}>Nouvel exercice</button>
+      <button className='btn btn-primary' onClick={() => {
+        dispatch({
+          type: 'ADD_EXERCISEBLOCK',
+          id: 1,
+          exercise: inputExercise.value
+        })
+      }}>Nouvel exercice</button>
     </div>
   )
 }
