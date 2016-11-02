@@ -1,17 +1,16 @@
 import { combineReducers } from 'redux'
-import trainings, { visibilityFilter, getVisibleTraining } from './trainings'
+import trainings, * as fromTrainings from './trainings'
+import visibilityFilterTraining from './visibilityFilterTraining'
 import { exercises } from './exercises'
 
 const rootReducer = combineReducers({
   trainings,
-  visibilityFilter,
+  visibilityFilterTraining,
   exercises,
 })
 
 export default rootReducer
 
-// use * fromTrainings
-// w8 for visibilityFilter
-export const getVisibleTraining2 = (state, filter) => {
-  return getVisibleTraining(state.trainings, filter)
+export const getVisibleTraining = (state, filter) => {
+  return fromTrainings.getVisibleTraining(state.trainings, filter)
 }

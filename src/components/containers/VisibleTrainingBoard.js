@@ -1,9 +1,9 @@
 import TrainingBoard from '../presentationals/TrainingBoard'
 import { connect } from 'react-redux'
-import { getVisibleTraining2 } from '../../reducers/index'
+import { getVisibleTraining } from '../../reducers/index'
 
 const mapStateToProps = (state) => {
-  const training = getVisibleTraining2(state, state.visibilityFilter)
+  const training = getVisibleTraining(state, state.visibilityFilterTraining)
   return {
     id: training.id,
     description: training.description,

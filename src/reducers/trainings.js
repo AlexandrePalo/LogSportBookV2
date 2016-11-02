@@ -52,15 +52,6 @@ export const getVisibleTraining = (state, filter) => {
   return state.byId[filter]
 }
 
-export const visibilityFilter = (state = 1, action) => {
-  switch (action.type) {
-    case 'SET_VISIBILITY_FILTER':
-      return action.filter
-    default:
-      return state
-  }
-}
-
 const trainings = combineReducers({
   byId,
   allIds
