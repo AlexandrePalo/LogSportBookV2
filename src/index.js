@@ -57,6 +57,7 @@ const persistedState = {
     allIds: [1]
   },
   visibilityFilterTraining: 1,
+  visibilityFilterExerciseBlock: 1,
   exercises: {
     byId: {
       1: {

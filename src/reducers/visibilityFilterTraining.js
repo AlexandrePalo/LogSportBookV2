@@ -1,6 +1,6 @@
 const visibilityFilterTraining = (state = 0, action) => {
   switch (action.type) {
-    case 'SET_VISIBILITY_FILTER':
+    case 'SET_VISIBILITY_FILTER_TRAINING':
       return action.filter
     default:
       return state

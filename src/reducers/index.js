@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux'
 import trainings, * as fromTrainings from './trainings'
 import visibilityFilterTraining from './visibilityFilterTraining'
+import visibilityFilterExerciseBlock from './visibilityFilterExerciseBlock'
 import exercises, * as fromExercises from './exercises'
 import * as fromExerciseBlocks from './exerciseBlocks'
 
 const rootReducer = combineReducers({
   trainings,
   visibilityFilterTraining,
+  visibilityFilterExerciseBlock,
   exercises,
 })
 
