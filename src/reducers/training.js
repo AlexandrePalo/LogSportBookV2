@@ -1,5 +1,6 @@
 let nextTrainingId = 2
 let nextExerciseBlockId = 3
+let nextSerieId = 4
 
 const training = (state, action) => {
   switch (action.type) {
@@ -20,12 +21,33 @@ const training = (state, action) => {
           ...state.exerciseBlocks,
           {
             id: nextExerciseBlockId++,
-            ns: 4,
             d: 20,
-            exercise: action.exercise
+            exercise: action.exercise,
+            series: []
           }
         ]
       })
+    case 'ADD_SERIE':
+      if (state.id !== action.id) {
+        return state
+      }
+      let toBeReturned = state
+      state.exerciseBlocks.map((e) => {
+        if (e.id === action.idExerciseBlock) {
+          toBeReturned = Object.assign({}, state, {
+            series: [
+              ...e.series,
+              {
+                id: nextSerieId++,
+                repetitions: action.repetitions,
+                load: action.load
+              }
+            ]
+          })
+        }
+      })
+      console.log(toBeReturned)
+      return toBeReturned
     default:
       return state
   }

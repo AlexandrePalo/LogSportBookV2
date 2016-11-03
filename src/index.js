@@ -15,12 +15,28 @@ const persistedState = {
         exerciseBlocks : [
           {
             id: 1,
-            ns: 4,
             d: 20,
             exercise: {
               id: 1,
               name: 'Développé couché'
-            }
+            },
+            series: [
+              {
+                id: 1,
+                repetitions: 10,
+                load: 80
+              },
+              {
+                id: 2,
+                repetitions: 9,
+                load: 100
+              },
+              {
+                id: 3,
+                repetitions: 8,
+                load: 90
+              }
+            ]
           },
           {
             id: 2,
@@ -29,7 +45,8 @@ const persistedState = {
             exercise: {
               id: 2,
               name: 'Dips'
-            }
+            },
+            series: []
           }
         ]
       }

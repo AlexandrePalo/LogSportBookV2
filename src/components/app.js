@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import TrainingBoard from './presentationals/TrainingBoard'
 import VisibleTrainingBoard from './containers/VisibleTrainingBoard'
-import SerieForm from './presentationals/SerieForm'
+import VisibleExerciseBlockBoard from './containers/VisibleExerciseBlockBoard'
 import moment from 'moment'
 
 import Header from './presentationals/Header'
@@ -20,7 +19,12 @@ export default class App extends Component {
           avatar="LogoAlex"
           onClickSettings={this.onClickSettings}/>
           <div className="container">
-            <VisibleTrainingBoard />
+            <div className="row">
+              <VisibleTrainingBoard />
+            </div>
+            <div className="row">
+              <VisibleExerciseBlockBoard />
+            </div>
           </div>
         </div>
       </div>

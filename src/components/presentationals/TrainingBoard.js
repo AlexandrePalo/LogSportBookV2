@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import ExerciseBlock from './ExerciseBlock'
-import ExerciseBlockForm from './ExerciseBlockForm'
 import moment from 'moment'
 import AddExerciseBlock from '../containers/AddExerciseBlock'
-
-var nextTrainingId = 1
 
 class TrainingBoard extends Component {
   render () {
@@ -20,7 +17,7 @@ class TrainingBoard extends Component {
               {props.exerciseBlocks.map(elem =>
                 <ExerciseBlock
                   exercise={elem.exercise}
-                  numberSeries={elem.ns}
+                  numberSeries={elem.series.length}
                   duration={elem.d}
                   id={elem.id}
                   key={elem.id}

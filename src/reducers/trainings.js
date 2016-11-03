@@ -5,6 +5,7 @@ const byId = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_EXERCISEBLOCK':
     case 'ADD_TRAINING':
+    case 'ADD_SERIE':
       return {
         ...state,
         [action.id]: training(state[action.id], action)
