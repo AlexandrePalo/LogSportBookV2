@@ -12,43 +12,46 @@ const persistedState = {
       1: {
         id: 1,
         description: 'pectoraux',
-        exerciseBlocks : [
-          {
-            id: 1,
-            d: 20,
-            exercise: {
+        exerciseBlocks : {
+          byId: {
+            1: {
               id: 1,
-              name: 'Développé couché'
-            },
-            series: [
-              {
+              d: 20,
+              exercise: {
                 id: 1,
-                repetitions: 10,
-                load: 80
+                name: 'Développé couché'
               },
-              {
-                id: 2,
-                repetitions: 9,
-                load: 100
-              },
-              {
-                id: 3,
-                repetitions: 8,
-                load: 90
-              }
-            ]
-          },
-          {
-            id: 2,
-            ns: 5,
-            d: 25,
-            exercise: {
-              id: 2,
-              name: 'Dips'
+              series: [
+                {
+                  id: 1,
+                  repetitions: 10,
+                  load: 80
+                },
+                {
+                  id: 2,
+                  repetitions: 9,
+                  load: 100
+                },
+                {
+                  id: 3,
+                  repetitions: 8,
+                  load: 90
+                }
+              ]
             },
-            series: []
-          }
-        ]
+            2: {
+              id: 2,
+              ns: 5,
+              d: 25,
+              exercise: {
+                id: 2,
+                name: 'Dips'
+              },
+              series: []
+            }
+          },
+          allIds: [1, 2]
+        }
       }
     },
     allIds: [1]

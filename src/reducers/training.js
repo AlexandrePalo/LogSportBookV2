@@ -1,6 +1,7 @@
+import exerciseBlocks from './exerciseBlocks'
 let nextTrainingId = 2
-let nextExerciseBlockId = 3
 let nextSerieId = 4
+let nextExerciseBlockId = 3
 
 const training = (state, action) => {
   switch (action.type) {
@@ -16,17 +17,10 @@ const training = (state, action) => {
       if (state.id !== action.id) {
         return state
       }
-      return Object.assign({}, state, {
-        exerciseBlocks: [
-          ...state.exerciseBlocks,
-          {
-            id: nextExerciseBlockId++,
-            d: 20,
-            exercise: action.exercise,
-            series: []
-          }
-        ]
-      })
+      return {
+        ...state,
+        exerciseBlocks: exerciseBlocks(state.exerciseBlocks, {...action, id: nextExerciseBlockId})
+      }
     case 'ADD_SERIE':
       if (state.id !== action.id) {
         return state
