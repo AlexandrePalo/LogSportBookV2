@@ -28,3 +28,7 @@ const exerciseBlocks = combineReducers({
 })
 
 export default exerciseBlocks
+
+export const getAllExerciseBlocks = (state) => {
+  return state.allIds.map(id => state.byId[id])
+}

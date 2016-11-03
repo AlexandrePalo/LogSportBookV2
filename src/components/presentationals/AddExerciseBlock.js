@@ -17,7 +17,6 @@ class AddExerciseBlock extends Component {
           props.dispatch({
             type: 'ADD_EXERCISEBLOCK',
             id: 1,
-            idExerciseBlock: undefined,
             exercise: props.byId[inputExercise.value]
           })
         }}>Nouvel exercice</button>

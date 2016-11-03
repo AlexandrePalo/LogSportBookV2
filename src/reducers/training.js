@@ -19,7 +19,7 @@ const training = (state, action) => {
       }
       return {
         ...state,
-        exerciseBlocks: exerciseBlocks(state.exerciseBlocks, {...action, id: nextExerciseBlockId})
+        exerciseBlocks: exerciseBlocks(state.exerciseBlocks, {...action, id: nextExerciseBlockId++})
       }
     case 'ADD_SERIE':
       if (state.id !== action.id) {
