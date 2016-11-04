@@ -21,10 +21,12 @@ class AddSerie extends Component {
           onChange={(e) => this.setState({ load: e.target.value })}
         />
         <button className='btn btn-primary' onClick={() => {
+          console.log(props.id)
+          console.log(props.exerciseBlockId)
           props.dispatch({
             type: 'ADD_SERIE',
-            id: 1,
-            idExerciseBlock: 1,
+            id: props.id,
+            exerciseBlockId: props.exerciseBlockId,
             repetitions: this.state.rep,
             load: this.state.load
           })

@@ -5,7 +5,8 @@ import { getAllExercises } from '../../reducers/index'
 const mapStateToProps = (state) => {
   return {
     byId: state.exercises.byId,
-    exercises: getAllExercises(state)
+    exercises: getAllExercises(state),
+    id: state.visibilityFilterTraining
   }
 }
 export default connect(

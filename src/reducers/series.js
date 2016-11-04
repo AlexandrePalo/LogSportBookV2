@@ -1,13 +1,13 @@
-import exerciseBlock from './exerciseBlock'
+import serie from './serie'
 import { combineReducers } from 'redux'
 
 const byId = (state = {}, action) => {
   switch (action.type) {
-    case 'ADD_EXERCISEBLOCK':
     case 'ADD_SERIE':
+      console.log(state)
       return {
         ...state,
-        [action.id]: exerciseBlock(state[action.id], action)
+        [action.id]: serie(state[action.id], action)
       }
     default:
       return state
@@ -16,20 +16,20 @@ const byId = (state = {}, action) => {
 
 const allIds = (state = [], action) => {
   switch (action.type) {
-    case 'ADD_EXERCISEBLOCK':
+    case 'ADD_SERIE':
       return [...state, action.id]
     default:
       return state
   }
 }
 
-const exerciseBlocks = combineReducers({
+const series = combineReducers({
   byId,
   allIds
 })
 
-export default exerciseBlocks
+export default series
 
-export const getAllExerciseBlocks = (state) => {
+export const getAllSeries = (state) => {
   return state.allIds.map(id => state.byId[id])
 }
