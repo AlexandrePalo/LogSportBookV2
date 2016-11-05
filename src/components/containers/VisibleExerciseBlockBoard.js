@@ -7,6 +7,7 @@ const mapStateToProps = (state) => {
   const exerciseBlock = state.trainings.byId[state.visibilityFilterTraining].exerciseBlocks.byId[state.visibilityFilterExerciseBlock]
   return {
     id: exerciseBlock.id,
+    trainingId: state.visibilityFilterTraining,
     name: exerciseBlock.exercise.name,
     series: getAllSeriesOneExerciseBlock(state, state.visibilityFilterTraining, state.visibilityFilterExerciseBlock)
   }

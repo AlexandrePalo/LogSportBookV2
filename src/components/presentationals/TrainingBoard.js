@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ExerciseBlock from './ExerciseBlock'
+import ExerciseBlock from '../containers/ExerciseBlock'
 import moment from 'moment'
 import AddExerciseBlock from '../containers/AddExerciseBlock'
 
@@ -21,6 +21,7 @@ class TrainingBoard extends Component {
                     exercise={e.exercise}
                     numberSeries={e.series.allIds.length}
                     duration='20'
+                    trainingId={props.id}
                     id={e.id}
                     onDelete={() => console.log('delete')}
                   />

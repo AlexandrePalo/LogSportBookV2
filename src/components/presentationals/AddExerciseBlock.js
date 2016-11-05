@@ -5,22 +5,27 @@ class AddExerciseBlock extends Component {
     let inputExercise
     const props = this.props
     return (
-      <div>
-        <select ref={node => {
-          inputExercise = node
-        }}>
-          {props.exercises.map((e) => {
-            return (<option value={e.id} key={e.id}>{e.name}</option>)
-          })}
-        </select>
-        <button className='btn btn-primary' onClick={() => {
+      <form className='col-md-offset-4 col-md-4'>
+        <div className='form-group'>
+          <label htmlFor='exercise'>Exercice</label>
+          <select
+            className='form-control'
+            ref={node => {
+            inputExercise = node
+          }}>
+            {props.exercises.map((e) => {
+              return (<option value={e.id} key={e.id}>{e.name}</option>)
+            })}
+          </select>
+        </div>
+        <button type='button' className='btn btn-block btn-primary' onClick={() => {
           props.dispatch({
             type: 'ADD_EXERCISEBLOCK',
             id: 1,
             exercise: props.byId[inputExercise.value]
           })
         }}>Nouvel exercice</button>
-      </div>
+      </form>
     )
   }
 }

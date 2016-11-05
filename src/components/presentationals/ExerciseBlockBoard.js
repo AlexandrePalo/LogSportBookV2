@@ -27,7 +27,9 @@ export default class ExerciseBlockBoard extends Component {
         <div className='row'>
           <div className='col-md-4'>
             <AddSerie />
-            <button className='btn btn-danger btn-block'>Terminer l'exercice</button>
+            <button className='btn btn-danger btn-block'
+            onClick={() => props.dispatch({ type: 'FINISH_EXERCISEBLOCK', id: props.trainingId, exerciseBlockId: props.id          })}
+            >Terminer l'exercice</button>
           </div>
         </div>
       </div>

@@ -8,7 +8,10 @@ const exerciseBlock = (state, action) => {
         id: action.id,
         d: 20,
         exercise: action.exercise,
-        series: []
+        series: {
+          byId: {},
+          allIds: []
+        }
       }
     case 'ADD_SERIE':
       if (state.id !== action.id) {

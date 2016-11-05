@@ -14,6 +14,7 @@ const training = (state, action) => {
         date_end: action.date_end
       }
     case 'ADD_SERIE':
+    case 'REMOVE_EXERCISEBLOCK':
       if (state.id !== action.id) {
         return state
       }
