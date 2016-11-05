@@ -11,12 +11,9 @@ const exerciseBlock = (state, action) => {
         series: []
       }
     case 'ADD_SERIE':
-      console.log(state.id)
-      console.log(action.id)
       if (state.id !== action.id) {
         return state
       }
-      console.log('passed to series')
       return {
         ...state,
         series: series(state.series, {...action, id: nextSerieId++})

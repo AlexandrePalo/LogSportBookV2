@@ -17,7 +17,6 @@ const training = (state, action) => {
       if (state.id !== action.id) {
         return state
       }
-      console.log('passed to exerciseBlock')
       return {
         ...state,
         exerciseBlocks: exerciseBlocks(state.exerciseBlocks, {...action, id: action.exerciseBlockId})

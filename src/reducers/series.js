@@ -4,7 +4,6 @@ import { combineReducers } from 'redux'
 const byId = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_SERIE':
-      console.log(state)
       return {
         ...state,
         [action.id]: serie(state[action.id], action)

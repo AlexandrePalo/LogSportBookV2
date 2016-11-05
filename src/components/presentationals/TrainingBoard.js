@@ -19,7 +19,7 @@ class TrainingBoard extends Component {
                   <ExerciseBlock
                     key={e.id}
                     exercise={e.exercise}
-                    numberSeries={e.series.length}
+                    numberSeries={e.series.allIds.length}
                     duration='20'
                     id={e.id}
                     onDelete={() => console.log('delete')}

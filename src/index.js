@@ -21,23 +21,26 @@ const persistedState = {
                 id: 1,
                 name: 'Développé couché'
               },
-              series: [
-                {
-                  id: 1,
-                  repetitions: 10,
-                  load: 80
+              series: {
+                byId: {
+                  1: {
+                    id: 1,
+                    repetitions: 10,
+                    load: 80
+                  },
+                  2: {
+                    id: 2,
+                    repetitions: 9,
+                    load: 100
+                  },
+                  3: {
+                    id: 3,
+                    repetitions: 8,
+                    load: 90
+                  }
                 },
-                {
-                  id: 2,
-                  repetitions: 9,
-                  load: 100
-                },
-                {
-                  id: 3,
-                  repetitions: 8,
-                  load: 90
-                }
-              ]
+                allIds: [1, 2, 3]
+              }
             },
             2: {
               id: 2,
@@ -47,7 +50,10 @@ const persistedState = {
                 id: 2,
                 name: 'Dips'
               },
-              series: []
+              series: {
+                byId: {},
+                allIds: []
+              }
             }
           },
           allIds: [1, 2]
