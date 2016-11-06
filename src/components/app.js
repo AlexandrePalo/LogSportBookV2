@@ -26,6 +26,7 @@ class App extends Component {
           avatar="LogoAlex"
           onClickSettings={this.onClickSettings}/>
           <div className="container">
+            <div className='col-12-md'>
             <div className="row">
               <VisibleTrainingBoard />
             </div>
@@ -36,6 +37,7 @@ class App extends Component {
             </div>)
             : (<div></div>)
             }
+            </div>
           </div>
         </div>
       </div>

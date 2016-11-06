@@ -7,6 +7,7 @@ const byId = (state = {}, action) => {
     case 'ADD_TRAINING':
     case 'ADD_SERIE':
     case 'REMOVE_EXERCISEBLOCK':
+    case 'REMOVE_SERIE':
       return {
         ...state,
         [action.id]: training(state[action.id], action)

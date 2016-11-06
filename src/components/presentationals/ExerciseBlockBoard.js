@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Serie from './Serie'
+import Serie from '../containers/Serie'
 import AddSerie from '../containers/AddSerie'
 
 export default class ExerciseBlockBoard extends Component {
@@ -10,6 +10,14 @@ export default class ExerciseBlockBoard extends Component {
         <div className='row'>
           <h1>{props.name}</h1>
           <table className='table table-striped table-hover'>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Répétitions</th>
+                <th>Charge</th>
+                <th></th>
+              </tr>
+            </thead>
             <tbody>
               {props.series.map((s) => {
                 return(
@@ -25,11 +33,8 @@ export default class ExerciseBlockBoard extends Component {
           </table>
         </div>
         <div className='row'>
-          <div className='col-md-4'>
+          <div className='col-md-offset-4 col-md-4'>
             <AddSerie />
-            <button className='btn btn-danger btn-block'
-            onClick={() => props.dispatch({ type: 'FINISH_EXERCISEBLOCK', id: props.trainingId, exerciseBlockId: props.id          })}
-            >Terminer l'exercice</button>
           </div>
         </div>
       </div>

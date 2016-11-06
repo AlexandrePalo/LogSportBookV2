@@ -25,7 +25,7 @@ const Header = ({
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li><p className="navbar-text">{first_name}</p></li>
-            <li><a href="#" onClick={onClickSettings}>Settings</a></li>
+            <li><a href="#" onClick={onClickSettings}><i className="fa fa-cogs fa-2x"></i></a></li>
             <li><p className="navbar-text">{avatar}</p></li>
           </ul>
         </div>

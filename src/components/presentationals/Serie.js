@@ -1,19 +1,24 @@
 import React, { Component } from 'react'
 
-const Serie = ({
-  repetitions,
-  load,
-  id,
-  onDelete
-}) => {
-  return (
-    <tr>
-      <td>V</td>
-      <td>Répétitions: {repetitions}</td>
-      <td>Charge: {load}</td>
-      <td onPress={() => { onDelete(id) }}>X</td>
-    </tr>
-  )
+export default class Serie extends Component {
+  render () {
+    let props = this.props
+    return (
+      <tr>
+        <td>V</td>
+        <td>{props.repetitions}</td>
+        <td>{props.load}</td>
+        <td>
+        <i className="fa fa-trash" aria-hidden="true" onClick={() =>
+          props.dispatch({
+            type: 'REMOVE_SERIE',
+            id: props.trainingId,
+            exerciseBlockId: props.exerciseBlockId,
+            serieId: props.id
+          })
+        }></i>
+        </td>
+      </tr>
+    )
+  }
 }
-
-export default Serie

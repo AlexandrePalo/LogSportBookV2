@@ -33,17 +33,21 @@ class AddSerie extends Component {
             <div className='input-group-addon'>kg</div>
           </div>
         </div>
-        <button className='btn btn-primary' type='button' onClick={() => {
+        <button className='btn btn-block btn-primary' type='button' onClick={() =>
           props.dispatch({
             type: 'ADD_SERIE',
             id: props.id,
             exerciseBlockId: props.exerciseBlockId,
             repetitions: this.state.rep,
             load: this.state.load
-          })
-        }}>Nouvel exercice</button>
+          })}>Nouvelle série</button>
+        <button className='btn btn-danger btn-block' type='button' onClick={() =>
+          props.dispatch({
+            type: 'FINISH_EXERCISEBLOCK',
+            id: props.exerciseBlockId,
+            exerciseBlockId: props.id
+        })}>Terminer l'exercice</button>
       </form>
-
     )
   }
 }

@@ -7,12 +7,21 @@ class TrainingBoard extends Component {
   render () {
     const props = this.props
     return (
-      <div>
+      <div className='col-12-md'>
         <div className='row'>
           <h1>Training n°{props.id}, {props.description}</h1>
         </div>
         <div className='row'>
           <table className='table table-striped table-hover'>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Exercice</th>
+                <th>Séries</th>
+                <th>Durée</th>
+                <th></th>
+              </tr>
+            </thead>
             <tbody>
               {props.exerciseBlocks.map((e) => {
                 return (
