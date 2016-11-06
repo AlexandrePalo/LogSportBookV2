@@ -1,7 +1,18 @@
 import { combineReducers } from 'redux'
 import training from './training'
 
-const byId = (state = {}, action) => {
+const initial = {
+  1: {
+    id: 1,
+    description: 'pectoraux',
+    exerciseBlocks : {
+      byId: {},
+      allIds: []
+    }
+  }
+}
+
+const byId = (state = initial, action) => {
   switch (action.type) {
     case 'ADD_EXERCISEBLOCK':
     case 'ADD_TRAINING':
@@ -17,7 +28,7 @@ const byId = (state = {}, action) => {
   }
 }
 
-const allIds = (state = [], action) => {
+const allIds = (state = [1], action) => {
   switch (action.type) {
     case 'ADD_TRAINING':
       return [...state, action.id]

@@ -1,7 +1,5 @@
 import exerciseBlocks from './exerciseBlocks'
-let nextTrainingId = 2
-let nextSerieId = 4
-let nextExerciseBlockId = 3
+import { v4 } from 'node-uuid'
 
 const training = (state, action) => {
   switch (action.type) {
@@ -29,7 +27,7 @@ const training = (state, action) => {
       }
       return {
         ...state,
-        exerciseBlocks: exerciseBlocks(state.exerciseBlocks, {...action, id: nextExerciseBlockId++})
+        exerciseBlocks: exerciseBlocks(state.exerciseBlocks, {...action, id: v4()})
       }
       return toBeReturned
     default:

@@ -1,5 +1,5 @@
 import series from './series'
-let nextSerieId = 4
+import { v4 } from 'node-uuid'
 
 const exerciseBlock = (state, action) => {
   switch (action.type) {
@@ -19,7 +19,7 @@ const exerciseBlock = (state, action) => {
       }
       return {
         ...state,
-        series: series(state.series, {...action, id: nextSerieId++})
+        series: series(state.series, {...action, id: v4()})
       }
     case 'REMOVE_SERIE':
       if (state.id !== action.id) {
