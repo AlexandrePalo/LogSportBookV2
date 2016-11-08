@@ -19,9 +19,10 @@ class AddExerciseBlock extends Component {
           </select>
         </div>
         <button type='button' className='btn btn-block btn-primary' onClick={() => {
+          console.log(props.id)
           props.dispatch({
             type: 'ADD_EXERCISEBLOCK',
-            id: 1,
+            id: props.id,
             exercise: props.byId[inputExercise.value]
           })
         }}>Nouvel exercice</button>

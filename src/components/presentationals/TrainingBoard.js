@@ -40,7 +40,7 @@ class TrainingBoard extends Component {
           </table>
         </div>
         <div className='row'>
-          <AddExerciseBlock />
+          <AddExerciseBlock id={props.id}/>
         </div>
       </div>
     )

@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 import { getVisibleTraining } from '../../reducers/index'
 import { getAllExerciseBlocksOneTraining } from '../../reducers/index'
 
-const mapStateToProps = (state) => {
-  const training = getVisibleTraining(state, state.visibilityFilterTraining)
+const mapStateToProps = (state, ownProps) => {
+  console.log('render')
+  console.log(state)
+  const training = getVisibleTraining(state, ownProps.id)
   return {
-    id: training.id,
     description: training.description,
     exerciseBlocks: getAllExerciseBlocksOneTraining(state, training.id)
   }

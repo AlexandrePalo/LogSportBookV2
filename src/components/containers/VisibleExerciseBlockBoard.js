@@ -3,13 +3,11 @@ import { connect } from 'react-redux'
 import { getAllExerciseBlocksOneTraining } from '../../reducers/index'
 import { getAllSeriesOneExerciseBlock } from '../../reducers/index'
 
-const mapStateToProps = (state) => {
-  const exerciseBlock = state.trainings.byId[state.visibilityFilterTraining].exerciseBlocks.byId[state.visibilityFilterExerciseBlock]
+const mapStateToProps = (state, ownProps) => {
+  const exerciseBlock = state.trainings.byId[ownProps.trainingId].exerciseBlocks.byId[ownProps.id]
   return {
-    id: exerciseBlock.id,
-    trainingId: state.visibilityFilterTraining,
     name: exerciseBlock.exercise.name,
-    series: getAllSeriesOneExerciseBlock(state, state.visibilityFilterTraining, state.visibilityFilterExerciseBlock)
+    series: getAllSeriesOneExerciseBlock(state, ownProps.trainingId, exerciseBlock.id)
   }
 }
 

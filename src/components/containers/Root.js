@@ -6,7 +6,9 @@ import App from '../app'
 const Root = ({ store }) => (
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path='/' component={App} />
+      <Route path='/training/:training' component={App}>
+        <Route path='exerciseBlock/:exerciseBlock' component={App} />
+      </Route>
     </Router>
   </Provider>
 )

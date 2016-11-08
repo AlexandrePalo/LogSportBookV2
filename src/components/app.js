@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import VisibleTrainingBoard from './containers/VisibleTrainingBoard'
 import VisibleExerciseBlockBoard from './containers/VisibleExerciseBlockBoard'
+import Header from './presentationals/Header'
+import AddTraining from './containers/AddTraining'
 import moment from 'moment'
 import { connect }from 'react-redux'
-
-import Header from './presentationals/Header'
 
 const mapStateToProps = (state) => {
   return {
@@ -22,22 +22,33 @@ class App extends Component {
       <div>
         <div>
           <Header
-          first_name="Alexandre"
+          first_name='Alexandre'
           avatar="LogoAlex"
           onClickSettings={this.onClickSettings}/>
           <div className="container">
-            <div className='col-12-md'>
-            <div className="row">
-              <VisibleTrainingBoard />
-            </div>
             {
-            (props.visibilityFilterExerciseBlock !== 0)
-            ? (<div className="row">
-              <VisibleExerciseBlockBoard />
-            </div>)
-            : (<div></div>)
+              props.params.training
+              ? (
+                  <div className='col-md-12'>
+                    <div className="row">
+                      <VisibleTrainingBoard id={props.params.training}/>
+                    </div>
+                    {
+                    props.params.exerciseBlock
+                    ? (<div className="row">
+                      <VisibleExerciseBlockBoard trainingId={props.params.training} id={props.params.exerciseBlock}/>
+                    </div>)
+                    : (<div></div>)
+                    }
+                  </div>
+              )
+              : (
+                <div className='col-md-4 col-md-offset-4'>
+                  <AddTraining />
+                </div>
+              )
             }
-            </div>
+
           </div>
         </div>
       </div>

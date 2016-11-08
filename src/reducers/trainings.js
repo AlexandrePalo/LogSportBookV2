@@ -1,10 +1,15 @@
 import { combineReducers } from 'redux'
 import training from './training'
+import { v4 } from 'node-uuid'
+import moment from 'moment'
 
 const initial = {
-  1: {
-    id: 1,
+  '9d890dfd-9a4a-46cf-baf3-0b81a20787cf': {
+    id: '9d890dfd-9a4a-46cf-baf3-0b81a20787cf',
     description: 'pectoraux',
+    place: 'BasicFit Metz',
+    date_begin: moment('2016-11-01 18:00:00'),
+    date_end: moment('2016-11-01 20:00:00'),
     exerciseBlocks : {
       byId: {},
       allIds: []
@@ -15,10 +20,10 @@ const initial = {
 const byId = (state = initial, action) => {
   switch (action.type) {
     case 'ADD_EXERCISEBLOCK':
-    case 'ADD_TRAINING':
     case 'ADD_SERIE':
     case 'REMOVE_EXERCISEBLOCK':
     case 'REMOVE_SERIE':
+    case 'ADD_TRAINING':
       return {
         ...state,
         [action.id]: training(state[action.id], action)
@@ -28,7 +33,7 @@ const byId = (state = initial, action) => {
   }
 }
 
-const allIds = (state = [1], action) => {
+const allIds = (state = ['9d890dfd-9a4a-46cf-baf3-0b81a20787cf'], action) => {
   switch (action.type) {
     case 'ADD_TRAINING':
       return [...state, action.id]

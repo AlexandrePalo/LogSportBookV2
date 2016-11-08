@@ -9,7 +9,11 @@ const training = (state, action) => {
         description: action.description,
         place: action.place,
         date_begin: action.date_begin,
-        date_end: action.date_end
+        date_end: action.date_end,
+        exerciseBlocks : {
+          byId: {},
+          allIds: []
+        }
       }
     case 'ADD_SERIE':
     case 'REMOVE_EXERCISEBLOCK':
