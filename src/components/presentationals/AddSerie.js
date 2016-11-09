@@ -36,16 +36,16 @@ class AddSerie extends Component {
         <button className='btn btn-block btn-primary' type='button' onClick={() =>
           props.dispatch({
             type: 'ADD_SERIE',
-            id: props.id,
-            exerciseBlockId: props.exerciseBlockId,
+            id: props.trainingId,
+            exerciseBlockId: props.id,
             repetitions: this.state.rep,
             load: this.state.load
           })}>Nouvelle série</button>
         <button className='btn btn-danger btn-block' type='button' onClick={() =>
           props.dispatch({
             type: 'FINISH_EXERCISEBLOCK',
-            id: props.exerciseBlockId,
-            exerciseBlockId: props.id
+            id: props.trainingId,
+            exerciseBlockId: props.id,
         })}>Terminer l'exercice</button>
       </form>
     )
