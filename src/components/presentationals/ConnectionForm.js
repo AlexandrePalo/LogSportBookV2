@@ -11,6 +11,17 @@ export default class ConnectionForm extends Component {
   }
 
   render () {
+    const style = {
+      input: {
+        fontWeight: '500',
+        fontSize: '15pt',
+        color: 'white'
+      },
+      inputText: {
+        fontSize: '15pt',
+        fontWeight: '500'
+      }
+    }
     return (
       <div className='panel panel-success' style={{background: 'none'}}>
         <div className='panel-heading'>
@@ -18,15 +29,17 @@ export default class ConnectionForm extends Component {
         </div>
         <div className='panel-body'>
           <form>
-            <div className="form-group">
+            <div className="form-group" style={style.input}>
               <label htmlFor="inputEmail">E-mail</label>
-              <input type="text" className="form-control" id="inputEmail" placeholder="E-mail"
-              onChange={(e) => { this.setState({ email: e.target.value })} }/>
+              <input type="text" className="form-control" id="inputEmail"
+                style={style.inputText}
+                onChange={(e) => { this.setState({ email: e.target.value })} }/>
             </div>
-            <div className="form-group">
+            <div className="form-group" style={style.input}>
               <label htmlFor="inputPassword">Mot de passe</label>
-              <input type="password" className="form-control" id="inputPassword" placeholder="Mot de passe"
-              onChange={(e) => { this.setState({ password: e.target.value })} }/>
+              <input type="password" className="form-control" id="inputPassword"
+                style={style.inputText}
+                onChange={(e) => { this.setState({ password: e.target.value })} }/>
             </div>
             <button type="button" className="btn btn-success btn-block"
               onClick={() => {

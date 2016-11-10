@@ -23,6 +23,17 @@ class AddUser extends Component {
   }
 
   render () {
+    const style = {
+      input: {
+        fontWeight: '500',
+        fontSize: '15pt',
+        color: 'white'
+      },
+      inputText: {
+        fontSize: '15pt',
+        fontWeight: '500'
+      }
+    }
     const props = this.props
     return (
       <div className='panel panel-primary' style={{background: 'none'}}>
@@ -31,44 +42,48 @@ class AddUser extends Component {
         </div>
         <div className='panel-body'>
           <form>
-            <div className="form-group">
+            <div className="form-group" style={style.input}>
               <label htmlFor='first_name'>Prénom</label>
               <input
                 className='form-control'
                 id='first_name'
                 value={this.state.first_name}
                 type='text'
+                style={style.inputText}
                 onChange={(e) => this.setState({ first_name: e.target.value })}
               />
             </div>
-            <div className="form-group">
+            <div className="form-group" style={style.input}>
               <label htmlFor='last_name'>Nom</label>
               <input
                 className='form-control'
                 id='last_name'
                 value={this.state.last_name}
                 type='text'
+                style={style.inputText}
                 onChange={(e) => this.setState({ last_name: e.target.value })}
               />
             </div>
-            <div className="form-group">
+            <div className="form-group" style={style.input}>
               <label htmlFor='date_birth'>Date de naissance</label>
               <div className='input-group date' ref='datetimepicker'>
                 <input type='text' className="form-control"
-                onBlur={(e) => this.setState({ date_birth: e.target.value })}
+                  style={style.inputText}
+                  onBlur={(e) => this.setState({ date_birth: e.target.value })}
                 />
                 <span className="input-group-addon">
                   <span className="glyphicon glyphicon-calendar"></span>
                 </span>
               </div>
             </div>
-            <div className="form-group">
+            <div className="form-group" style={style.input}>
               <label htmlFor='password'>Mot de passe</label>
               <input
                 className='form-control'
                 id='password'
                 value={this.state.password}
                 type='password'
+                style={style.inputText}
                 onChange={(e) => this.setState({ password: e.target.value })}
               />
             </div>
