@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 const Header = ({
   first_name,
@@ -20,12 +21,11 @@ const Header = ({
 
         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul className="nav navbar-nav">
-            <li className="active"><a href="#">Accueil</a></li>
-            <li><a href="#">Blog</a></li>
+            <li className="active"><Link to='/'>Accueil</Link></li>
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li><p className="navbar-text">{first_name}</p></li>
-            <li><a href="#" onClick={onClickSettings}><i className="fa fa-cogs fa-2x"></i></a></li>
+            <li><Link to='settings'><i className="fa fa-cogs fa-2x"></i></Link></li>
             <li><p className="navbar-text">{avatar}</p></li>
           </ul>
         </div>

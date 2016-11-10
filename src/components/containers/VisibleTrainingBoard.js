@@ -4,9 +4,7 @@ import { getVisibleTraining } from '../../reducers/index'
 import { getAllExerciseBlocksOneTraining } from '../../reducers/index'
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('render')
-  console.log(state)
-  const training = getVisibleTraining(state, ownProps.id)
+  const training = getVisibleTraining(state, ownProps.params.training)
   return {
     description: training.description,
     exerciseBlocks: getAllExerciseBlocksOneTraining(state, training.id)

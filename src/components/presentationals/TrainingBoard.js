@@ -9,7 +9,7 @@ class TrainingBoard extends Component {
     return (
       <div className='col-12-md'>
         <div className='row'>
-          <h1>Training n°{props.id}, {props.description}</h1>
+          <h1>Training n°{props.params.training}, {props.description}</h1>
         </div>
         <div className='row'>
           <table className='table table-striped table-hover'>
@@ -30,7 +30,7 @@ class TrainingBoard extends Component {
                     exercise={e.exercise}
                     numberSeries={e.series.allIds.length}
                     duration='20'
-                    trainingId={props.id}
+                    trainingId={props.params.training}
                     id={e.id}
                     onDelete={() => console.log('delete')}
                   />
@@ -40,7 +40,7 @@ class TrainingBoard extends Component {
           </table>
         </div>
         <div className='row'>
-          <AddExerciseBlock id={props.id}/>
+          <AddExerciseBlock id={props.params.training}/>
         </div>
       </div>
     )

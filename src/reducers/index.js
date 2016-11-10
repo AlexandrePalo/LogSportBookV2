@@ -5,12 +5,14 @@ import visibilityFilterExerciseBlock from './visibilityFilterExerciseBlock'
 import exercises, * as fromExercises from './exercises'
 import * as fromExerciseBlocks from './exerciseBlocks'
 import * as fromSeries from './series'
+import user from './user'
 
 const rootReducer = combineReducers({
   trainings,
   visibilityFilterTraining,
   visibilityFilterExerciseBlock,
   exercises,
+  user
 })
 
 export default rootReducer
