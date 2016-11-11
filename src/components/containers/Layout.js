@@ -11,12 +11,13 @@ const mapStateToProps = (state) => {
 
 class Layout extends Component {
   render () {
-    console.log(this.props.children)
     const props = this.props
     return (
       <div>
         <Header first_name={props.first_name} avatar={props.avatar}/>
-        {this.props.children}
+        <div className='container'>
+          {this.props.children}
+        </div>
       </div>
     )
   }
