@@ -5,7 +5,6 @@ import AddSerie from '../containers/AddSerie'
 export default class ExerciseBlockBoard extends Component {
   render () {
     const props = this.props
-    console.log(props)
     return (
       <div>
         <div className='row'>
@@ -26,8 +25,8 @@ export default class ExerciseBlockBoard extends Component {
                   repetitions={s.repetitions}
                   load={s.load}
                   id={s.id}
-                  exerciseBlockId={props.id}
-                  trainingId={props.trainingId}
+                  exerciseBlock={props.params.exerciseBlock}
+                  training={props.params.training}
                   key={s.id}
                 />
               )}
@@ -37,7 +36,7 @@ export default class ExerciseBlockBoard extends Component {
         </div>
         <div className='row'>
           <div className='col-md-offset-4 col-md-4'>
-            <AddSerie id={props.id} trainingId={props.trainingId}/>
+            <AddSerie id={props.params.exerciseBlock} training={props.params.training}/>
           </div>
         </div>
       </div>

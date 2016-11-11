@@ -15,7 +15,7 @@ const Begin = () => {
           <p style={{ color: 'white', fontSize: '30pt', textAlign: 'center' }}>Fixez des objectifs. Suivez vos performances. Restez motivé.</p>
         </div>
         <Link to='begin/login'>
-          <button className='btn btn-primary btn-lg btn-block' type='button'>
+          <button className='btn btn-success btn-lg btn-block' type='button'>
             Commencer
           </button>
         </Link>

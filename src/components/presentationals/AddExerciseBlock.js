@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { v4 } from 'node-uuid'
 
 class AddExerciseBlock extends Component {
   render () {
@@ -19,12 +20,14 @@ class AddExerciseBlock extends Component {
           </select>
         </div>
         <button type='button' className='btn btn-block btn-primary' onClick={() => {
-          console.log(props.id)
+          let id = v4()
           props.dispatch({
             type: 'ADD_EXERCISEBLOCK',
             id: props.id,
+            exerciseBlockId: id,
             exercise: props.byId[inputExercise.value]
           })
+          this.context.router.push('/trainings/' + props.id + '/exerciseblocks/' + id)
         }}>Nouvel exercice</button>
       </form>
     )
@@ -32,3 +35,7 @@ class AddExerciseBlock extends Component {
 }
 
 export default AddExerciseBlock
+
+AddExerciseBlock.contextTypes = {
+    router: React.PropTypes.object.isRequired
+}

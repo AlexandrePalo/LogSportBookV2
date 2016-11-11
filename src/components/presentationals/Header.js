@@ -7,7 +7,7 @@ const Header = ({
   onClickSettings
 }) => {
   return (
-    <nav className="navbar navbar-default">
+    <nav className="navbar navbar-static-top navbar-default">
       <div className="container-fluid">
         <div className="navbar-header">
           <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -16,7 +16,7 @@ const Header = ({
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <a className="navbar-brand" href="#">LSP</a>
+          <Link to='/' className='navbar-brand'>LSP</Link>
         </div>
 
         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -25,7 +25,7 @@ const Header = ({
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li><p className="navbar-text">{first_name}</p></li>
-            <li><Link to='settings'><i className="fa fa-cogs fa-2x"></i></Link></li>
+            <li><Link to='settings'><i className="fa fa-cogs"></i></Link></li>
             <li><p className="navbar-text">{avatar}</p></li>
           </ul>
         </div>

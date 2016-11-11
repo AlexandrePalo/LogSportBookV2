@@ -17,6 +17,11 @@ const rootReducer = combineReducers({
 
 export default rootReducer
 
+export const getAllTrainings = (state) => {
+  return fromTrainings.getAllTrainings(state.trainings)
+}
+
+// Todo: useless
 export const getVisibleTraining = (state, filter) => {
   return fromTrainings.getVisibleTraining(state.trainings, filter)
 }

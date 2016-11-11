@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import Training from './Training'
+import Training from '../containers/Training'
 import moment from 'moment'
 import Chart from 'chart.js'
+import { v4 } from 'node-uuid'
+import AddTraining from '../containers/AddTraining'
+
 class MyAccount extends Component {
 
   componentDidMount () {
@@ -49,14 +52,16 @@ class MyAccount extends Component {
       }
   });
   }
+
   render () {
+    let props = this.props
     return (
       <div>
         <div className='row'>
           <div className="jumbotron col-md-12">
             <h1>A la une</h1>
             <p>Le plus difficile est de rester motivé tout au long de l'année, ne perdez pas espoir ! Il est temps de s'entraîner cette semaine.</p>
-            <p><a className="btn btn-success btn-lg">Nouvel entraînement</a></p>
+            <p><button className="btn btn-success btn-lg" data-toggle="modal" data-target="#newTrainingModal">Nouvel entraînement</button></p>
           </div>
         </div>
 
@@ -78,24 +83,20 @@ class MyAccount extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  <Training
-                    description='Pectoraux - biceps'
-                    date_begin={moment('2016-11-07 20:00')}
-                    number_exerciseBlocks='4'
-                    duration={moment.duration(moment('2016-11-07 22:00').diff(moment('2016-11-07 20:00')))}
-                  />
-                  <Training
-                    description='Dos - triceps'
-                    date_begin={moment('2016-11-09 21:00')}
-                    number_exerciseBlocks='4'
-                    duration={moment.duration(moment('2016-11-09 21:00').diff(moment('2016-11-09 20:00')))}
-                  />
-                  <Training
-                    description='Epaules - james'
-                    date_begin={moment('2016-11-11 18:00')}
-                    number_exerciseBlocks='4'
-                    duration={moment.duration(moment('2016-11-11 20:00').diff(moment('2016-11-11 18:30')))}
-                  />
+                  {props.trainings.map((t) => {
+                    let date_begin = moment(t.date_begin)
+                    let date_end = moment(t.date_end)
+                    return (
+                      <Training
+                        description={t.description}
+                        date_begin={date_begin}
+                        number_exerciseBlocks={t.exerciseBlocks.allIds.length}
+                        duration={moment.duration(date_end.diff(date_begin))}
+                        key={t.id}
+                        id={t.id}
+                      />
+                    )
+                  })}
                 </tbody>
               </table>
             </div>
@@ -141,6 +142,24 @@ class MyAccount extends Component {
             </div>
           </div>
         </div>
+
+        <div className="modal fade" id="newTrainingModal" tabIndex="-1" role="dialog" aria-labelledby="newTrainingModal">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 className="modal-title" id="myModalLabel">Nouvel entrainement</h4>
+              </div>
+              <div className="modal-body">
+                <AddTraining />
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-default" data-dismiss="modal">Annuler</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     )
   }

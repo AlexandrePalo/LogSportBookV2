@@ -18,20 +18,13 @@ const training = (state, action) => {
     case 'ADD_SERIE':
     case 'REMOVE_EXERCISEBLOCK':
     case 'REMOVE_SERIE':
-      if (state.id !== action.id) {
-        return state
-      }
-      return {
-        ...state,
-        exerciseBlocks: exerciseBlocks(state.exerciseBlocks, {...action, id: action.exerciseBlockId})
-      }
     case 'ADD_EXERCISEBLOCK':
       if (state.id !== action.id) {
         return state
       }
       return {
         ...state,
-        exerciseBlocks: exerciseBlocks(state.exerciseBlocks, {...action, id: v4()})
+        exerciseBlocks: exerciseBlocks(state.exerciseBlocks, {...action, id: action.exerciseBlockId})
       }
       return toBeReturned
     default:

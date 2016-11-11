@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 class AddSerie extends Component {
+
   constructor(props) {
     super(props)
     this.state = { rep: '', load: '' }
@@ -36,20 +37,21 @@ class AddSerie extends Component {
         <button className='btn btn-block btn-primary' type='button' onClick={() =>
           props.dispatch({
             type: 'ADD_SERIE',
-            id: props.trainingId,
+            id: props.training,
             exerciseBlockId: props.id,
             repetitions: this.state.rep,
             load: this.state.load
           })}>Nouvelle série</button>
         <button className='btn btn-danger btn-block' type='button' onClick={() =>
-          props.dispatch({
-            type: 'FINISH_EXERCISEBLOCK',
-            id: props.trainingId,
-            exerciseBlockId: props.id,
-        })}>Terminer l'exercice</button>
+          this.context.router.push('/trainings/' + props.training)
+        }>Terminer l'exercice</button>
       </form>
     )
   }
 }
 
 export default AddSerie
+
+AddSerie.contextTypes = {
+    router: React.PropTypes.object.isRequired
+}

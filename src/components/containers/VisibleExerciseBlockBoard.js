@@ -4,10 +4,10 @@ import { getAllExerciseBlocksOneTraining } from '../../reducers/index'
 import { getAllSeriesOneExerciseBlock } from '../../reducers/index'
 
 const mapStateToProps = (state, ownProps) => {
-  const exerciseBlock = state.trainings.byId[ownProps.trainingId].exerciseBlocks.byId[ownProps.id]
+  const exerciseBlock = state.trainings.byId[ownProps.params.training].exerciseBlocks.byId[ownProps.params.exerciseBlock]
   return {
     name: exerciseBlock.exercise.name,
-    series: getAllSeriesOneExerciseBlock(state, ownProps.trainingId, exerciseBlock.id)
+    series: getAllSeriesOneExerciseBlock(state, ownProps.params.training, exerciseBlock.id)
   }
 }
 

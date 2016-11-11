@@ -28,6 +28,10 @@ const byId = (state = initial, action) => {
         ...state,
         [action.id]: training(state[action.id], action)
       }
+    case 'REMOVE_TRAINING':
+      let t = Object.assign({}, state)
+      delete t[action.id]
+      return t
     default:
       return state
   }
@@ -37,12 +41,15 @@ const allIds = (state = ['9d890dfd-9a4a-46cf-baf3-0b81a20787cf'], action) => {
   switch (action.type) {
     case 'ADD_TRAINING':
       return [...state, action.id]
+    case 'REMOVE_TRAINING':
+      let index = state.indexOf(action.id)
+      return state.slice(0, index).concat(state.slice(index + 1))
     default:
       return state
   }
 }
 
-const getAllTrainings = (state) => {
+export const getAllTrainings = (state) => {
   return state.allIds.map(id => state.byId[id])
 }
 

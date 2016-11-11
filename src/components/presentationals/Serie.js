@@ -12,8 +12,8 @@ export default class Serie extends Component {
         <i className="fa fa-trash" aria-hidden="true" onClick={() =>
           props.dispatch({
             type: 'REMOVE_SERIE',
-            id: props.trainingId,
-            exerciseBlockId: props.exerciseBlockId,
+            id: props.training,
+            exerciseBlockId: props.exerciseBlock,
             serieId: props.id
           })
         }></i>

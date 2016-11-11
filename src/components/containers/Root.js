@@ -4,8 +4,9 @@ import React, { PropTypes } from 'react'
 import App from '../app'
 
 import Layout from './Layout'
-import MyAccount from '../presentationals/MyAccount'
+import MyAccount from './MyAccount'
 import VisibleTrainingBoard from './VisibleTrainingBoard'
+import VisibleExerciseBlockBoard from './VisibleExerciseBlockBoard'
 
 import LayoutBegin from '../presentationals/LayoutBegin'
 import Begin from '../presentationals/Begin'
@@ -23,9 +24,11 @@ const Root = ({ store }) => (
       </Route>
 
       <Route path='/' component={Layout}>
-        <IndexRoute component={MyAccount}/>
 
+        <IndexRoute component={MyAccount}/>
         <Route path='/trainings/:training' component={VisibleTrainingBoard}>
+          <IndexRoute/>
+          <Route path='/trainings/:training/exerciseblocks/:exerciseBlock' component={VisibleExerciseBlockBoard}/>
         </Route>
 
         <Route path='settings' component={Settings}/>

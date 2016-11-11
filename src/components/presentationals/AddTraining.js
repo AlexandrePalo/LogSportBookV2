@@ -6,7 +6,7 @@ import { v4 } from 'node-uuid'
 class AddTraining extends Component {
   constructor(props) {
     super(props)
-    this.state = { description: '', place: '', date_begin: '', date_end: '' }
+    this.state = { description: '', place: '', date_begin: moment(), date_end: moment().add(2, 'h') }
   }
   componentDidMount () {
     $(this.refs.datetimepicker_begin).datetimepicker({
@@ -64,18 +64,27 @@ class AddTraining extends Component {
             </span>
           </div>
         </div>
-        <button className='btn btn-block btn-primary' type='button' onClick={() =>
-          props.dispatch({
-            type: 'ADD_TRAINING',
-            id: v4(),
-            description: this.state.description,
-            place: this.state.place,
-            date_begin: moment(this.state.date_begin, 'DD/MM/YY HH:mm'),
-            date_end: moment(this.state.date_end, 'DD/MM/YY HH:mm'),
-          })}>Nouvel entrainement</button>
+        <button className='btn btn-block btn-success' type='button' data-dismiss="modal"
+          onClick={() => {
+            let id = v4()
+            props.dispatch({
+              type: 'ADD_TRAINING',
+              id,
+              description: this.state.description,
+              place: this.state.place,
+              date_begin: moment(this.state.date_begin, 'DD/MM/YY HH:mm'),
+              date_end: moment(this.state.date_end, 'DD/MM/YY HH:mm'),
+            })
+            this.context.router.push('/trainings/' + id)
+          }
+        }>Nouvel entrainement</button>
       </form>
     )
   }
 }
 
 export default AddTraining
+
+AddTraining.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
