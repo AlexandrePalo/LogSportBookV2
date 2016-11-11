@@ -33,6 +33,7 @@
     "babel-preset-stage-1": "^6.1.18",
     "bootstrap": "^3.3.7",
     "bootstrap-select": "^1.11.2",
+    "chart.js": "^2.3.0",
     "eonasdan-bootstrap-datetimepicker": "^4.17.42",
     "font-awesome": "^4.7.0",
     "history": "^4.4.0",

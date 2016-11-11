@@ -1,8 +1,54 @@
 import React, { Component } from 'react'
 import Training from './Training'
 import moment from 'moment'
-
+import Chart from 'chart.js'
 class MyAccount extends Component {
+
+  componentDidMount () {
+    var ctx = this.refs.myChart
+    var scatterChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          datasets: [{
+              label: "Volume d'entrainement",
+              data: [
+                {
+                  x: 0,
+                  y: 100
+                },
+                {
+                  x: 1,
+                  y: 110
+                },
+                {
+                  x: 2,
+                  y: 105
+                },
+                {
+                  x: 3,
+                  y: 112
+                },
+                {
+                  x: 4,
+                  y: 116
+                },
+                {
+                  x: 5,
+                  y: 118
+                }
+                ]
+          }]
+      },
+      options: {
+          scales: {
+              xAxes: [{
+                  type: 'linear',
+                  position: 'bottom'
+              }]
+          }
+      }
+  });
+  }
   render () {
     return (
       <div>
@@ -90,7 +136,7 @@ class MyAccount extends Component {
                 <h3 className="panel-title">Evolution</h3>
               </div>
               <div className="panel-body">
-                Graphique d'évolution
+                <canvas ref="myChart" width="400" height="100"></canvas>
               </div>
             </div>
           </div>
