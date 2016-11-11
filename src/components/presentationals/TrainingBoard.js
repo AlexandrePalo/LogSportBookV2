@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ExerciseBlock from '../containers/ExerciseBlock'
 import moment from 'moment'
-import AddExerciseBlock from '../containers/AddExerciseBlock'
+import AddExerciseBlockL from '../containers/AddExerciseBlock'
 
 class TrainingBoard extends Component {
   render () {
@@ -40,7 +40,7 @@ class TrainingBoard extends Component {
           </table>
         </div>
         <div className='row'>
-          <AddExerciseBlock id={props.params.training}/>
+          <AddExerciseBlockL id={props.params.training}/>
         </div>
         <div className='row'>
           {props.children}

@@ -1,6 +1,4 @@
 import { createStore, applyMiddleware } from 'redux'
-import { loadState, saveState } from './localStorage'
-import throttle from 'lodash/function/throttle'
 import rootReducer from './reducers/index'
 
 // Logging states and action
@@ -21,21 +19,30 @@ const addLoggingToDispatch = (store) => {
   }
 }
 
+// Accept promises
+const addPromiseSupportToDispatch = (store) => {
+  const rawDispatch = store.dispatch
+  return (action) => {
+    if (typeof action.then === 'function') {
+      return action.then(rawDispatch)
+    }
+    return rawDispatch(action)
+  }
+}
+
 // Store
 const configureStore = () => {
-  const persistedState = loadState()
   const store = createStore(
-    rootReducer,
-    persistedState
+    rootReducer
   )
+
 
   // log
   if (process.env.NODE_ENV !== 'production') {
     store.dispatch = addLoggingToDispatch(store)
   }
-  store.subscribe(throttle(() => {
-    saveState(store.getState())
-  }, 1000))
+
+  store.dispatch = addPromiseSupportToDispatch(store)
 
   return store
 }
