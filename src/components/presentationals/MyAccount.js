@@ -4,63 +4,28 @@ import moment from 'moment'
 import Chart from 'chart.js'
 import { v4 } from 'node-uuid'
 import AddTraining from '../containers/AddTraining'
+import LineChart from '../containers/LineChart'
 
 class MyAccount extends Component {
 
-  componentDidMount () {
-    var ctx = this.refs.myChart
-    var scatterChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-          datasets: [{
-              label: "Volume d'entrainement",
-              data: [
-                {
-                  x: 0,
-                  y: 100
-                },
-                {
-                  x: 1,
-                  y: 110
-                },
-                {
-                  x: 2,
-                  y: 105
-                },
-                {
-                  x: 3,
-                  y: 112
-                },
-                {
-                  x: 4,
-                  y: 116
-                },
-                {
-                  x: 5,
-                  y: 118
-                }
-                ]
-          }]
-      },
-      options: {
-          scales: {
-              xAxes: [{
-                  type: 'linear',
-                  position: 'bottom'
-              }]
-          }
-      }
-  });
-  }
-
   render () {
+
+    const style = {
+      jumbotron: {
+        background: 'white url(/src/img/kickboxer.jpeg) no-repeat center center',
+      },
+      text: {
+        color: 'white'
+      }
+    }
+
     let props = this.props
     return (
       <div>
         <div className='row'>
-          <div className="jumbotron col-md-12">
-            <h1>A la une</h1>
-            <p>Le plus difficile est de rester motivé tout au long de l'année, ne perdez pas espoir ! Il est temps de s'entraîner cette semaine.</p>
+          <div className="jumbotron col-md-12" style={style.jumbotron}>
+            <h1 style={style.text}>A la une</h1>
+            <p style={style.text}>Le plus difficile est de rester motivé tout au long de l'année, ne perdez pas espoir ! Il est temps de s'entraîner cette semaine.</p>
             <p><button className="btn btn-success btn-lg" data-toggle="modal" data-target="#newTrainingModal">Nouvel entraînement</button></p>
           </div>
         </div>
@@ -137,7 +102,7 @@ class MyAccount extends Component {
                 <h3 className="panel-title">Evolution</h3>
               </div>
               <div className="panel-body">
-                <canvas ref="myChart" width="400" height="100"></canvas>
+                <LineChart />
               </div>
             </div>
           </div>

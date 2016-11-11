@@ -4,7 +4,7 @@ class AddSerie extends Component {
 
   constructor(props) {
     super(props)
-    this.state = { rep: '', load: '' }
+    this.state = { rep: 0, load: 0 }
   }
 
   render () {
@@ -39,8 +39,8 @@ class AddSerie extends Component {
             type: 'ADD_SERIE',
             id: props.training,
             exerciseBlockId: props.id,
-            repetitions: this.state.rep,
-            load: this.state.load
+            repetitions: Number(this.state.rep),
+            load: Number(this.state.load)
           })}>Nouvelle série</button>
         <button className='btn btn-danger btn-block' type='button' onClick={() =>
           this.context.router.push('/trainings/' + props.training)
