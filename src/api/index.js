@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch'
 import moment from 'moment'
 
-const baseUrlApi = 'http://localhost:3000/api'
+const baseUrlApi = 'http://logsportbook.alexandrepalo.com/api'
 
 const initial = {
   trainings: {
