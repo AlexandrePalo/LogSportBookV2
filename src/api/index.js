@@ -1,3 +1,8 @@
+import fetch from 'isomorphic-fetch'
+import moment from 'moment'
+
+const baseUrlApi = 'http://localhost:3000/api'
+
 const initial = {
   trainings: {
     byId: {
@@ -41,15 +46,9 @@ const initial = {
   }
 }
 
-const delay = (ms) =>
-  new Promise(resolve => setTimeout(resolve, ms))
-
-export const fetchTraining = () =>
-  delay(500).then(() => {
-    return initial.trainings.allIds.map(id => initial.trainings.byId[id])
-  })
-
 export const fetchExercises = () =>
-  delay(500).then(() => {
-    return initial.exercises.allIds.map(id => initial.exercises.byId[id])
+  fetch(baseUrlApi + '/exercises').then(function(response) {
+    return response.json().then(function(json) {
+      return json
+    })
   })

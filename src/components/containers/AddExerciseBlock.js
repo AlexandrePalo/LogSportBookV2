@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import React, { Component } from 'react'
 import AddExerciseBlock from '../presentationals/AddExerciseBlock'
 import { getAllExercises } from '../../reducers/index'
-import * as actionExercises from '../../actions/exercises'
+import * as actions from '../../actions/index'
 
 class AddExerciseBlockL extends Component {
 
@@ -16,7 +16,8 @@ class AddExerciseBlockL extends Component {
   }
 
   render () {
-    return <AddExerciseBlock {...this.props}/>
+    let { addExerciseBlock, ...rest } = this.props
+    return <AddExerciseBlock addExerciseBlock={addExerciseBlock} {...rest}/>
   }
 }
 
@@ -29,7 +30,7 @@ const mapStateToProps = (state) => {
 
 AddExerciseBlockL = connect(
   mapStateToProps,
-  actionExercises
+  actions
 )(AddExerciseBlockL)
 
 export default AddExerciseBlockL

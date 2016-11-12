@@ -1,4 +1,5 @@
 import * as api from '../api/index'
+import { v4 } from 'node-uuid'
 
 export const fetchExercises = () =>
   api.fetchExercises().then(response =>
@@ -7,4 +8,11 @@ export const fetchExercises = () =>
 const receiveExercises = (response) => ({
   type: 'RECEIVE_EXERCISES',
   response
+})
+
+export const addExerciseBlock = (idTraining, exercise, idExerciseBlock=v4()) => ({
+  type: 'ADD_EXERCISEBLOCK',
+  id: idTraining,
+  exerciseBlockId: idExerciseBlock,
+  exercise: exercise
 })

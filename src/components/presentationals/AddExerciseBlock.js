@@ -12,8 +12,8 @@ class AddExerciseBlock extends Component {
           <select
             className='form-control'
             ref={node => {
-            inputExercise = node
-          }}>
+              inputExercise = node
+            }}>
             {props.exercises.map((e) => {
               return (<option value={e.id} key={e.id}>{e.name}</option>)
             })}
@@ -21,12 +21,7 @@ class AddExerciseBlock extends Component {
         </div>
         <button type='button' className='btn btn-block btn-primary' onClick={() => {
           let id = v4()
-          props.dispatch({
-            type: 'ADD_EXERCISEBLOCK',
-            id: props.id,
-            exerciseBlockId: id,
-            exercise: props.byId[inputExercise.value]
-          })
+          props.addExerciseBlock(props.id, props.byId[inputExercise.value], id)
           this.context.router.push('/trainings/' + props.id + '/exerciseblocks/' + id)
         }}>Nouvel exercice</button>
       </form>
@@ -37,5 +32,5 @@ class AddExerciseBlock extends Component {
 export default AddExerciseBlock
 
 AddExerciseBlock.contextTypes = {
-    router: React.PropTypes.object.isRequired
+  router: React.PropTypes.object.isRequired
 }
