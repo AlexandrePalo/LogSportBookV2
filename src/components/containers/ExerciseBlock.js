@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import ExerciseBlock from '../presentationals/ExerciseBlock'
+import * as actions from '../../actions/index'
 
 const mapStateToProps = (state) => {
   return {
@@ -8,5 +9,5 @@ const mapStateToProps = (state) => {
 }
 export default connect(
   mapStateToProps,
-  null
+  { removeExerciseBlock: actions.removeExerciseBlock }
 )(ExerciseBlock)

@@ -35,13 +35,8 @@ class AddSerie extends Component {
           </div>
         </div>
         <button className='btn btn-block btn-primary' type='button' onClick={() =>
-          props.dispatch({
-            type: 'ADD_SERIE',
-            id: props.training,
-            exerciseBlockId: props.id,
-            repetitions: Number(this.state.rep),
-            load: Number(this.state.load)
-          })}>Nouvelle série</button>
+          props.addSerie(props.training, props.id, Number(this.state.rep), Number(this.state.load))
+        }>Nouvelle série</button>
         <button className='btn btn-danger btn-block' type='button' onClick={() =>
           this.context.router.push('/trainings/' + props.training)
         }>Terminer l'exercice</button>
@@ -53,5 +48,5 @@ class AddSerie extends Component {
 export default AddSerie
 
 AddSerie.contextTypes = {
-    router: React.PropTypes.object.isRequired
+  router: React.PropTypes.object.isRequired
 }

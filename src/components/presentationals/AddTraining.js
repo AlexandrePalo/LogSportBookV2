@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import datetimepicker from 'eonasdan-bootstrap-datetimepicker'
 import moment from 'moment'
 import { v4 } from 'node-uuid'
+import $ from 'jquery'
 
 class AddTraining extends Component {
   constructor(props) {
@@ -12,11 +13,11 @@ class AddTraining extends Component {
     $(this.refs.datetimepicker_begin).datetimepicker({
       format: 'DD/MM/YY HH:mm',
       defaultDate: moment()
-    });
+    })
     $(this.refs.datetimepicker_end).datetimepicker({
       format: 'DD/MM/YY HH:mm',
       defaultDate: moment().add(2, 'h')
-    });
+    })
   }
   render () {
     const props = this.props
@@ -67,14 +68,13 @@ class AddTraining extends Component {
         <button className='btn btn-block btn-success' type='button' data-dismiss="modal"
           onClick={() => {
             let id = v4()
-            props.dispatch({
-              type: 'ADD_TRAINING',
-              id,
-              description: this.state.description,
-              place: this.state.place,
-              date_begin: moment(this.state.date_begin, 'DD/MM/YY HH:mm'),
-              date_end: moment(this.state.date_end, 'DD/MM/YY HH:mm'),
-            })
+            props.addTraining(
+              this.state.description,
+              this.state.place,
+              moment(this.state.date_begin, 'DD/MM/YY HH:mm'),
+              moment(this.state.date_end, 'DD/MM/YY HH:mm'),
+              id
+            )
             this.context.router.push('/trainings/' + id)
           }
         }>Nouvel entrainement</button>
@@ -86,5 +86,5 @@ class AddTraining extends Component {
 export default AddTraining
 
 AddTraining.contextTypes = {
-    router: React.PropTypes.object.isRequired
-};
+  router: React.PropTypes.object.isRequired
+}

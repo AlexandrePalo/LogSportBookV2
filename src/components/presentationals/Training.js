@@ -19,10 +19,7 @@ export default class Training extends Component {
         <td>{props.duration.hours()}h{(props.duration.minutes() === 0) ? '' : props.duration.minutes()}</td>
         <td>
         <i className="fa fa-trash" aria-hidden="true" onClick={() =>
-          props.dispatch({
-            type: 'REMOVE_TRAINING',
-            id: props.id
-          })
+          props.removeTraining(props.id)
         }></i>
         </td>
       </tr>

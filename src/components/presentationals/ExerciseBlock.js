@@ -18,12 +18,8 @@ export default class ExerciseBlock extends Component {
         <td>{props.duration}</td>
         <td
           onClick={() =>
-            props.dispatch({
-              type: 'REMOVE_EXERCISEBLOCK',
-              id: props.training,
-              exerciseBlockId: props.id })}
-          >
-          <i className="fa fa-trash" aria-hidden="true"></i>
+            props.removeExerciseBlock(props.training, props.id)
+          }><i className="fa fa-trash" aria-hidden="true"></i>
         </td>
       </tr>
     )

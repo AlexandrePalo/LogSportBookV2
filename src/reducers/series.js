@@ -3,29 +3,29 @@ import { combineReducers } from 'redux'
 
 const byId = (state = {}, action) => {
   switch (action.type) {
-    case 'ADD_SERIE':
-      return {
-        ...state,
-        [action.id]: serie(state[action.id], action)
-      }
-    case 'REMOVE_SERIE':
-      let s = Object.assign({}, state)
-      delete s[action.id]
-      return s
-    default:
-      return state
+  case 'ADD_SERIE':
+    return {
+      ...state,
+      [action.id]: serie(state[action.id], action)
+    }
+  case 'REMOVE_SERIE':
+    var s = Object.assign({}, state)
+    delete s[action.id]
+    return s
+  default:
+    return state
   }
 }
 
 const allIds = (state = [], action) => {
   switch (action.type) {
-    case 'ADD_SERIE':
-      return [...state, action.id]
-    case 'REMOVE_SERIE':
-      let index = state.indexOf(action.id)
-      return state.slice(0, index).concat(state.slice(index + 1))
-    default:
-      return state
+  case 'ADD_SERIE':
+    return [...state, action.id]
+  case 'REMOVE_SERIE':
+    var index = state.indexOf(action.id)
+    return state.slice(0, index).concat(state.slice(index + 1))
+  default:
+    return state
   }
 }
 
