@@ -31,6 +31,7 @@
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
+    "auth0-lock": "^10.6.1",
     "babel-plugin-transform-object-rest-spread": "^6.16.0",
     "babel-preset-stage-1": "^6.1.18",
     "bootstrap": "^3.3.7",
@@ -42,10 +43,12 @@
     "font-awesome": "^4.7.0",
     "history": "^4.4.0",
     "isomorphic-fetch": "^2.2.1",
+    "jwt-decode": "^2.1.0",
     "lodash": "^3.10.1",
     "moment": "^2.15.1",
     "node-uuid": "^1.4.7",
     "react": "^0.14.3",
+    "react-bootstrap": "^0.30.6",
     "react-dom": "^0.14.3",
     "react-redux": "^4.0.0",
     "react-router": "^2.0.1",

@@ -12,11 +12,17 @@ const mapStateToProps = (state) => {
 class Layout extends Component {
   render () {
     const props = this.props
+    let children = null
+    if (this.props.children) {
+      children = React.cloneElement(this.props.children, {
+        auth: this.props.route.auth
+      })
+    }
     return (
       <div>
-        <Header first_name={props.first_name} avatar={props.avatar}/>
+        <Header first_name={props.first_name} avatar={props.avatar} auth={props.route.auth}/>
         <div className='container'>
-          {this.props.children}
+          {children}
         </div>
       </div>
     )
