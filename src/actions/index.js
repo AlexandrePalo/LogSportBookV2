@@ -107,3 +107,35 @@ export const receiveUser = (response) => ({
   type: 'RECEIVE_USER',
   response
 })
+
+export const requestUser = () => ({
+  type: 'REQUEST_USER'
+})
+
+export const fetchTrainings = (userId) =>
+  api.fetchTrainings(userId).then(response =>
+    receiveTrainings(response))
+
+export const receiveTrainings = (response) => ({
+  type: 'RECEIVE_TRAININGS',
+  response
+})
+
+export const requestTrainings = () => ({
+  type: 'REQUEST_TRAININGS'
+})
+
+export const fetchExerciseBlocks = (trainingId) =>
+  api.fetchExerciseBlocks(trainingId).then(response =>
+    receiveTrainings(response, trainingId))
+
+export const receiveExerciseBlocks = (response, trainingId) => ({
+  type: 'RECEIVE_EXERCISEBLOCKS',
+  response,
+  trainingId
+})
+
+export const requestExerciseBlocks = (trainingId) => ({
+  type: 'REQUEST_EXERCISEBLOCKS',
+  trainingId
+})

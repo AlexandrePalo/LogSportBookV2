@@ -68,3 +68,17 @@ export const fetchUser = (sessionToken) =>
       return json
     })
   })
+
+export const fetchTrainings = (userId) =>
+  fetch(baseUrlApi + '/trainings?user=' + userId).then(function(response) {
+    return response.json().then(function(json) {
+      return json
+    })
+  })
+
+export const fetchExerciseBlocks = (trainingId) =>
+  fetch(baseUrlApi + '/exerciseblocks?training=' + trainingId).then(function(response) {
+    return response.json().then(function(json) {
+      return json
+    })
+  })

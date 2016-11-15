@@ -1,7 +1,5 @@
 import { combineReducers } from 'redux'
 import trainings, * as fromTrainings from './trainings'
-import visibilityFilterTraining from './visibilityFilterTraining'
-import visibilityFilterExerciseBlock from './visibilityFilterExerciseBlock'
 import exercises, * as fromExercises from './exercises'
 import * as fromExerciseBlocks from './exerciseBlocks'
 import * as fromSeries from './series'
@@ -9,8 +7,6 @@ import user from './user'
 
 const rootReducer = combineReducers({
   trainings,
-  visibilityFilterTraining,
-  visibilityFilterExerciseBlock,
   exercises,
   user
 })

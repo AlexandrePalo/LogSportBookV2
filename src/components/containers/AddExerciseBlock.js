@@ -5,7 +5,6 @@ import { getAllExercises } from '../../reducers/index'
 import * as actions from '../../actions/index'
 
 class AddExerciseBlockL extends Component {
-
   componentDidMount () {
     this.fetchData()
   }

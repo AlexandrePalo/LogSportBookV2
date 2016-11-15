@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react'
 import App from '../app'
 
 import Layout from './Layout'
-import MyAccount from './MyAccount'
+import MyAccountL from './MyAccount'
 import VisibleTrainingBoard from './VisibleTrainingBoard'
 import VisibleExerciseBlockBoard from './VisibleExerciseBlockBoard'
 
@@ -48,7 +48,7 @@ const Root = ({ store }) => (
 
       <Route path='/' component={Layout} auth={auth}>
 
-        <IndexRoute component={MyAccount} onEnter={requireAuth}/>
+        <IndexRoute component={MyAccountL} onEnter={requireAuth}/>
         <Route path='/trainings/:training' component={VisibleTrainingBoard}>
           <IndexRoute/>
           <Route path='/trainings/:training/exerciseblocks/:exerciseBlock'

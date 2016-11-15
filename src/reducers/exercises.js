@@ -32,9 +32,21 @@ const allIds = (state = [], action) => {
   }
 }
 
+const isFetching = (state = false, action) => {
+  switch (action.type) {
+  case 'REQUEST_EXERCISES':
+    return true
+  case 'RECEIVE_EXERCISES':
+    return false
+  default:
+    return state
+  }
+}
+
 const exercises = combineReducers({
   byId,
-  allIds
+  allIds,
+  isFetching
 })
 
 export default exercises

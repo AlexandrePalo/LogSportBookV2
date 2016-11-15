@@ -29,9 +29,21 @@ const allIds = (state = [], action) => {
   }
 }
 
+const isFetching = (state = false, action) => {
+  switch (action.type) {
+  case 'REQUEST_SERIES':
+    return true
+  case 'RECEIVE_SERIES':
+    return false
+  default:
+    return state
+  }
+}
+
 const series = combineReducers({
   byId,
-  allIds
+  allIds,
+  isFetching
 })
 
 export default series
