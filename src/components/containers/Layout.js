@@ -4,7 +4,7 @@ import Header from '../presentationals/Header'
 
 const mapStateToProps = (state) => {
   return {
-    first_name: state.user.first_name,
+    first_name: state.user.id,
     avatar: state.user.avatar
   }
 }

@@ -1,7 +1,13 @@
 const user = (state={}, action) => {
   switch (action.type) {
-    default:
-      return state
+  case 'CREATE_SESSION':
+    return {...state, sessionToken: action.sessionToken}
+  case 'REMOVE_SESSION':
+    return {}
+  case 'RECEIVE_USER':
+    return {...state, id: action.response.response.user_id}
+  default:
+    return state
   }
 }
 

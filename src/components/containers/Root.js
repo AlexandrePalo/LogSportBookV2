@@ -20,7 +20,6 @@ import AuthService from '../../utils/AuthService'
 const auth = new AuthService('yoZpCbGsAxzrisPVmskO1h4UPliN6wl6', 'lsb.eu.auth0.com')
 
 const requireAuth = (nextState, replace) => {
-  console.log('logged in', auth.loggedIn())
   //because the page can't set the id token fast enough, check the nextState to see if the hash exists
   //if it does exist then grab the id token from the hash and then set it to local storage
   if (nextState.location.hash) {
@@ -29,11 +28,9 @@ const requireAuth = (nextState, replace) => {
     const idString = '&id_token'
     const firstIndex = hashString.indexOf(idString) + idString.length + 1
     const lastIndex = hashString.indexOf('&token_type=')
-    console.log(hashString.substring(firstIndex, lastIndex))
     localStorage.setItem('id_token', hashString.substring(firstIndex, lastIndex))
   }
   if (!auth.loggedIn()) {
-    console.log(nextState, 'nextState', replace, 'replace')
     replace({ pathname: '/login' })
     return false
   }

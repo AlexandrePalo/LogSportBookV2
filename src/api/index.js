@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch'
 import moment from 'moment'
 
 const baseUrlApi = 'http://logsportbook.alexandrepalo.com/api'
+const baseUrlApiAuth0 = 'https://lsb.eu.auth0.com'
 
 const initial = {
   trainings: {
@@ -48,6 +49,21 @@ const initial = {
 
 export const fetchExercises = () =>
   fetch(baseUrlApi + '/exercises').then(function(response) {
+    return response.json().then(function(json) {
+      return json
+    })
+  })
+
+export const fetchUser = (sessionToken) =>
+  fetch(baseUrlApiAuth0 + '/tokeninfo',
+    {
+      method: 'POST',
+      body: JSON.stringify({id_token: sessionToken}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  ).then(function(response) {
     return response.json().then(function(json) {
       return json
     })

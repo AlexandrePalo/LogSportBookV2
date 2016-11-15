@@ -89,3 +89,21 @@ export const removeSerie = (idTraining, idExerciseBlock, idSerie) => ({
   exerciseBlockId: idExerciseBlock,
   serieId: idSerie
 })
+
+export const createSession = (sessionToken) => ({
+  type: 'CREATE_SESSION',
+  sessionToken
+})
+
+export const removeSession = () => ({
+  type: 'REMOVE_SESSION'
+})
+
+export const fetchUser = (sessionToken) =>
+  api.fetchUser(sessionToken).then(response =>
+    receiveUser(response))
+
+export const receiveUser = (response) => ({
+  type: 'RECEIVE_USER',
+  response
+})
