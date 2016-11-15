@@ -2,6 +2,7 @@ import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import React, { PropTypes } from 'react'
 import App from '../app'
+import dotenv from 'dotenv'
 
 import Layout from './Layout'
 import MyAccount from './MyAccount'
@@ -17,7 +18,8 @@ import Settings from './Settings'
 import Login from '../presentationals/Login'
 import AuthService from '../../utils/AuthService'
 
-const auth = new AuthService('yoZpCbGsAxzrisPVmskO1h4UPliN6wl6', 'lsb.eu.auth0.com')
+dotenv.load()
+const auth = new AuthService(process.env.AUTH0_SECRET, process.env.AUTH0_API_URL)
 
 const requireAuth = (nextState, replace) => {
   console.log('logged in', auth.loggedIn())
