@@ -10,8 +10,7 @@ class MyAccountL extends Component {
   }
 
   fetchData () {
-    const { fetchTrainings, requestTrainings, userId } = this.props
-    requestTrainings()
+    const { fetchTrainings, userId } = this.props
     fetchTrainings(userId)
   }
 

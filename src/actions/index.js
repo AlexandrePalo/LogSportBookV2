@@ -112,16 +112,19 @@ export const requestUser = () => ({
   type: 'REQUEST_USER'
 })
 
-export const fetchTrainings = (userId) =>
-  api.fetchTrainings(userId).then(response =>
-    receiveTrainings(response))
+export const fetchTrainings = (userId) => (dispatch) => {
+  dispatch(requestTrainings())
+  return api.fetchTrainings(userId).then(response => {
+    dispatch(receiveTrainings(response))
+  })
+}
 
-export const receiveTrainings = (response) => ({
+const receiveTrainings = (response) => ({
   type: 'RECEIVE_TRAININGS',
   response
 })
 
-export const requestTrainings = () => ({
+const requestTrainings = () => ({
   type: 'REQUEST_TRAININGS'
 })
 
