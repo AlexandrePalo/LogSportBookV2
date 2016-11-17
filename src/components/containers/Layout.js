@@ -5,8 +5,7 @@ import Spinner from 'react-spinner-children'
 
 const mapStateToProps = (state) => {
   return {
-    user_isFetching: state.user.isFetching,
-    first_name: state.user.id,
+    user_id: localStorage.getItem('user_id'),
     avatar: state.user.avatar
   }
 }
@@ -21,14 +20,12 @@ class Layout extends Component {
       })
     }
     return (
-      <Spinner loaded={!props.user_isFetching}>
-        <div>
-          <Header first_name={props.first_name} avatar={props.avatar} auth={props.route.auth}/>
-          <div className='container'>
-            {children}
-          </div>
+      <div>
+        <Header user_id={props.user_id} avatar={props.avatar} auth={props.route.auth}/>
+        <div className='container'>
+          {children}
         </div>
-      </Spinner>
+      </div>
     )
   }
 }

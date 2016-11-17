@@ -2,6 +2,8 @@ import Auth0Lock from 'auth0-lock'
 import { isTokenExpired } from './jwtHelper'
 import { createSession, removeSession, fetchUser, receiveUser, requestUser } from '../actions/index'
 import store from '../index'
+import fetch from 'isomorphic-fetch'
+
 export default class AuthService {
   constructor(clientId, domain) {
     // Configure Auth0
@@ -15,6 +17,10 @@ export default class AuthService {
   _doAuthentication(authResult){
     // Saves the user token
     this.setToken(authResult.idToken)
+    // Set the current user (sync needed !)
+    fetchUser(authResult.idToken).then((json) => {
+      localStorage.setItem('user_id', json.response.user_id)
+    })
   }
 
   login() {
@@ -29,11 +35,6 @@ export default class AuthService {
   }
 
   setToken(idToken){
-    // store the session token
-    store.dispatch(createSession(idToken))
-    // fetch info about the user loggedIn
-    store.dispatch(requestUser())
-    fetchUser(idToken).then(response => store.dispatch(receiveUser(response)))
     localStorage.setItem('id_token', idToken)
   }
 
@@ -43,7 +44,7 @@ export default class AuthService {
   }
 
   logout(){
-    store.dispatch(removeSession())
     localStorage.removeItem('id_token')
+    localStorage.removeItem('user_id')
   }
 }

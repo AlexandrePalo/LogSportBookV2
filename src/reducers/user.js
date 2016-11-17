@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-const user = (state={}, action) => {
+const user = (state={ isFetching: false }, action) => {
   switch (action.type) {
   case 'CREATE_SESSION':
     return {...state, sessionToken: action.sessionToken}

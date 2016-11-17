@@ -17,12 +17,10 @@ import Login from '../presentationals/Login'
 import AuthService from '../../utils/AuthService'
 
 const auth = new AuthService('yoZpCbGsAxzrisPVmskO1h4UPliN6wl6', 'lsb.eu.auth0.com')
+import store from '../../index'
 
 const requireAuth = (nextState, replace) => {
-  //because the page can't set the id token fast enough, check the nextState to see if the hash exists
-  //if it does exist then grab the id token from the hash and then set it to local storage
   if (nextState.location.hash) {
-    //you can use regex here, it would be a lot more efficent
     const hashString = nextState.location.hash
     const idString = '&id_token'
     const firstIndex = hashString.indexOf(idString) + idString.length + 1

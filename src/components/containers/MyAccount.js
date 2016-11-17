@@ -6,6 +6,7 @@ import * as actions from '../../actions/index'
 
 class MyAccountL extends Component {
   componentDidMount () {
+    console.log(this.props.userId)
     this.fetchData()
   }
 
@@ -23,7 +24,7 @@ class MyAccountL extends Component {
 const mapStateToProps = (state) => {
   return {
     trainings: getAllTrainings(state),
-    userId: state.user.id
+    userId: localStorage.getItem('user_id')
   }
 }
 

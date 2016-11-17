@@ -32,7 +32,7 @@ class Header extends React.Component {
               <li className="active"><Link to='/'>Accueil</Link></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
-              <li><p className="navbar-text">{props.first_name}</p></li>
+              <li><p className="navbar-text">{props.user_id}</p></li>
               <li><Link to='settings'><i className="fa fa-cogs"></i></Link></li>
               <li><p className="navbar-text">{props.avatar}</p></li>
               {props.auth.loggedIn()

@@ -54,11 +54,12 @@ export const fetchExercises = () =>
     })
   })
 
-export const fetchUser = (sessionToken) =>
+export const fetchUser = (idToken) =>
   fetch(baseUrlApiAuth0 + '/tokeninfo',
     {
+      async: false,
       method: 'POST',
-      body: JSON.stringify({id_token: sessionToken}),
+      body: JSON.stringify({id_token: idToken}),
       headers: {
         'Content-Type': 'application/json'
       }
