@@ -10,6 +10,8 @@ const byId = (state = {}, action) => {
   case 'REMOVE_EXERCISEBLOCK':
   case 'REMOVE_SERIE':
   case 'ADD_TRAINING':
+  case 'REQUEST_EXERCISEBLOCKS':
+  case 'RECEIVE_EXERCISEBLOCKS':
     return {
       ...state,
       [action.id]: training(state[action.id], action)
@@ -47,7 +49,6 @@ const allIds = (state = [], action) => {
     var index = state.indexOf(action.id)
     return state.slice(0, index).concat(state.slice(index + 1))
   case 'RECEIVE_TRAININGS':
-    console.log(action.response)
     return action.response.map(t => t._id)
   default:
     return state

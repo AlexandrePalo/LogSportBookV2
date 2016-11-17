@@ -14,6 +14,19 @@ const byId = (state = {}, action) => {
     var s = Object.assign({}, state)
     delete s[action.id]
     return s
+  case 'RECEIVE_EXERCISEBLOCKS':
+    var newState = {}
+    action.response.forEach((eb) => {
+      newState[eb._id] = {
+        id: eb._id,
+        exercise: eb.exercise,
+        series: {
+          byId: {},
+          allIds: []
+        }
+      }
+    })
+    return newState
   default:
     return state
   }
@@ -26,6 +39,8 @@ const allIds = (state = [], action) => {
   case 'REMOVE_EXERCISEBLOCK':
     var index = state.indexOf(action.id)
     return state.slice(0, index).concat(state.slice(index + 1))
+  case 'RECEIVE_EXERCISEBLOCKS':
+    return action.response.map(eb => eb._id)
   default:
     return state
   }

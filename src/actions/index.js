@@ -127,15 +127,15 @@ export const requestTrainings = () => ({
 
 export const fetchExerciseBlocks = (trainingId) =>
   api.fetchExerciseBlocks(trainingId).then(response =>
-    receiveTrainings(response, trainingId))
+    receiveExerciseBlocks(response, trainingId))
 
 export const receiveExerciseBlocks = (response, trainingId) => ({
   type: 'RECEIVE_EXERCISEBLOCKS',
   response,
-  trainingId
+  id: trainingId
 })
 
 export const requestExerciseBlocks = (trainingId) => ({
   type: 'REQUEST_EXERCISEBLOCKS',
-  trainingId
+  id: trainingId
 })

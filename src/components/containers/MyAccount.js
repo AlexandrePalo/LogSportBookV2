@@ -16,7 +16,6 @@ class MyAccountL extends Component {
   }
 
   render () {
-    console.log(this.props)
     let { ...rest } = this.props
     return <MyAccount {...rest}/>
   }

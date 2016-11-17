@@ -32,7 +32,6 @@ class TrainingBoard extends Component {
                     duration='20'
                     training={props.params.training}
                     id={e.id}
-                    onDelete={() => console.log('delete')}
                   />
                 )
               })}

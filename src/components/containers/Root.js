@@ -1,11 +1,10 @@
 import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import React, { PropTypes } from 'react'
-import App from '../app'
 
 import Layout from './Layout'
 import MyAccountL from './MyAccount'
-import VisibleTrainingBoard from './VisibleTrainingBoard'
+import TrainingBoardL from './TrainingBoard'
 import VisibleExerciseBlockBoard from './VisibleExerciseBlockBoard'
 
 import LayoutBegin from '../presentationals/LayoutBegin'
@@ -49,7 +48,7 @@ const Root = ({ store }) => (
       <Route path='/' component={Layout} auth={auth}>
 
         <IndexRoute component={MyAccountL} onEnter={requireAuth}/>
-        <Route path='/trainings/:training' component={VisibleTrainingBoard}>
+        <Route path='/trainings/:training' component={TrainingBoardL}>
           <IndexRoute/>
           <Route path='/trainings/:training/exerciseblocks/:exerciseBlock'
             component={VisibleExerciseBlockBoard}
