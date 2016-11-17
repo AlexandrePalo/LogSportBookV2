@@ -22,7 +22,6 @@ class MyAccountL extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('map state')
   return {
     trainings: getAllTrainings(state),
     userId: state.user.id

@@ -23,16 +23,30 @@ const byId = (state = {}, action) => {
   case 'RECEIVE_TRAININGS':
     var newState = {}
     action.response.forEach((t) => {
+
+      var newStateEexerciseBlocks = {byId: {}, allIds: []}
+      t.exerciseBlocks.forEach((eb) => {
+        newStateEexerciseBlocks.byId = {
+          ...newStateEexerciseBlocks.byId,
+          [eb._id]: {
+            id: eb._id,
+            place: eb.place,
+            date_begin: moment(eb.date_begin),
+            date_end: moment(eb.date_end),
+            index: eb.index,
+            series: {byId: {}, allIds: []}
+          }
+        }
+      })
+      newStateEexerciseBlocks.allIds = t.exerciseBlocks.map(eb => eb._id)
+
       newState[t._id] = {
         id: t._id,
         description: t.description,
         place: t.place,
         date_begin: moment(t.date_begin),
         date_end: moment(t.date_end),
-        exerciseBlocks: {
-          byId: {},
-          allIds: []
-        }
+        exerciseBlocks: newStateEexerciseBlocks
       }
     })
     return newState
