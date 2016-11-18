@@ -157,7 +157,7 @@ export const loginUserWithSession = (accessToken) => (dispatch) => {
     dispatch(receiveLogin({
       profile,
       accessToken,
-      tokenId: localStorage.tokenId
+      tokenId: localStorage.getItem('id_token')
     }))
   })
 }

@@ -23,7 +23,7 @@ class MyAccountL extends Component {
 const mapStateToProps = (state) => {
   return {
     trainings: getAllTrainings(state),
-    userId: localStorage.getItem('user_id')
+    userId: state.user.profile.user_id
   }
 }
 

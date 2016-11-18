@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Header from '../presentationals/Header'
-import Spinner from 'react-spinner-children'
+import * as actions from '../../actions/index'
 
 const mapStateToProps = (state) => {
   return {
-    user_id: localStorage.getItem('user_id'),
-    avatar: state.user.avatar
+    profile: state.user.profile
   }
 }
 
@@ -19,18 +18,35 @@ class Layout extends Component {
         auth: this.props.route.auth
       })
     }
-    return (
-      <div>
-        <Header user_id={props.user_id} avatar={props.avatar} auth={props.route.auth}/>
-        <div className='container'>
-          {children}
+
+    if (props.profile) {
+      return (
+        <div>
+          <Header user_id={props.user_id} avatar={props.avatar} auth={props.route.auth}/>
+          <div className='container'>
+            {children}
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      // Fetch profile
+      const { loginUserWithSession } = props
+      loginUserWithSession(localStorage.getItem('access_token'))
+      return (
+        <div>
+          <Header user_id={props.user_id} avatar={props.avatar} auth={props.route.auth}/>
+          <div className='container'>
+            <p>Loading profile ...</p>
+          </div>
+        </div>
+      )
+    }
+
+
   }
 }
 
 export default connect(
   mapStateToProps,
-  null
+  actions
 )(Layout)
