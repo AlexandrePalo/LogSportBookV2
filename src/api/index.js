@@ -1,9 +1,9 @@
 import fetch from 'isomorphic-fetch'
 import moment from 'moment'
 
-const baseUrlApi = 'http://logsportbook.alexandrepalo.com/api'
-const baseUrlApiAuth0 = 'https://lsb.eu.auth0.com'
-const clientId = 'yoZpCbGsAxzrisPVmskO1h4UPliN6wl6'
+const baseUrlApi = process.env.BASE_URL_API
+const baseUrlApiAuth0 = process.env.BASE_URL_AUTH0
+const clientId = process.env.CLIENT_ID
 
 export const fetchExercises = () =>
   fetch(baseUrlApi + '/exercises').then(function(response) {

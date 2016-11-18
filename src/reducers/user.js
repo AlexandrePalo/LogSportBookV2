@@ -15,6 +15,7 @@ const user = (state={
   case 'LOGIN_SUCCESS':
     localStorage.setItem('profile', action.profile)
     localStorage.setItem('id_token', action.tokenId)
+    localStorage.setItem('access_token', action.accessToken)
     return {
       isFetching: false,
       isAuthenticated: true,

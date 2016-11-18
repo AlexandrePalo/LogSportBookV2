@@ -28,7 +28,8 @@ export default class AuthService {
     // Check if there is a savec profile
     const token = this.getToken()
     const profile = this.getProfile()
-    return (!!token && !isTokenExpired(token)) && !!profile
+    const access_token = this.getAccessToken()
+    return (!!token && !isTokenExpired(token)) && !!profile && !!access_token
   }
 
   setProfile(profile){
@@ -37,6 +38,10 @@ export default class AuthService {
 
   setToken(idToken){
     localStorage.setItem('id_token', idToken)
+  }
+
+  setAccessToken(accessToken){
+    localStorage.setItem('access_token', accessToken)
   }
 
   getToken(){
@@ -48,8 +53,13 @@ export default class AuthService {
     return localStorage.getItem('profile')
   }
 
+  getAccessToken(){
+    return localStorage.getItem('access_token')
+  }
+
   logout(){
     localStorage.removeItem('id_token')
     localStorage.removeItem('profile')
+    localStorage.removeItem('access_token')
   }
 }

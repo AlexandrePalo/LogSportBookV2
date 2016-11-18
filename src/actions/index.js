@@ -150,3 +150,14 @@ export const loginUser = (creds) => (dispatch) => {
     })
   })
 }
+
+export const loginUserWithSession = (accessToken) => (dispatch) => {
+  dispatch(requestLogin(accessToken))
+  api.fetchProfile(accessToken).then(profile => {
+    dispatch(receiveLogin({
+      profile,
+      accessToken,
+      tokenId: localStorage.tokenId
+    }))
+  })
+}

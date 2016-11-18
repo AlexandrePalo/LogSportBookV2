@@ -7,7 +7,7 @@ import * as actions from '../../actions/index'
 
 class TrainingBoardL extends Component {
   componentDidMount () {
-    this.fetchData()
+    //this.fetchData()
   }
 
   fetchData () {
