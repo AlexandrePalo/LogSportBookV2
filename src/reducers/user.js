@@ -1,15 +1,27 @@
 import { combineReducers } from 'redux'
 
-const user = (state={ isFetching: false }, action) => {
+const user = (state={
+  isFetching: false,
+  isAuthenticated: false},
+  action) => {
+
   switch (action.type) {
-  case 'CREATE_SESSION':
-    return {...state, sessionToken: action.sessionToken}
-  case 'REMOVE_SESSION':
-    return {}
-  case 'REQUEST_USER':
-    return {...state, isFetching: true}
-  case 'RECEIVE_USER':
-    return {...state, id: action.response.response.user_id, isFetching: false}
+  case 'LOGIN_REQUEST':
+    return {
+      isFetching: true,
+      isAuthenticated: false,
+      creds: action.creds
+    }
+  case 'LOGIN_SUCCESS':
+    localStorage.setItem('profile', action.profile)
+    localStorage.setItem('id_token', action.tokenId)
+    return {
+      isFetching: false,
+      isAuthenticated: true,
+      tokenId: action.tokenId,
+      accessToken: action.accessToken,
+      profile: action.profile
+    }
   default:
     return state
   }

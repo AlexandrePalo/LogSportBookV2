@@ -20,15 +20,8 @@ const auth = new AuthService('yoZpCbGsAxzrisPVmskO1h4UPliN6wl6', 'lsb.eu.auth0.c
 import store from '../../index'
 
 const requireAuth = (nextState, replace) => {
-  if (nextState.location.hash) {
-    const hashString = nextState.location.hash
-    const idString = '&id_token'
-    const firstIndex = hashString.indexOf(idString) + idString.length + 1
-    const lastIndex = hashString.indexOf('&token_type=')
-    localStorage.setItem('id_token', hashString.substring(firstIndex, lastIndex))
-  }
   if (!auth.loggedIn()) {
-    replace({ pathname: '/login' })
+    replace({ pathname: '/start/login' })
     return false
   }
   return true
@@ -40,7 +33,7 @@ const Root = ({ store }) => (
 
       <Route path='/start' component={LayoutBegin}>
         <IndexRoute component={Begin}/>
-        <Route path='/start/log' component={LogOrCreate}/>
+        <Route path='/start/login' component={LogOrCreate}/>
       </Route>
 
       <Route path='/' component={Layout} auth={auth}>
@@ -53,7 +46,6 @@ const Root = ({ store }) => (
             onEnter={requireAuth}/>
         </Route>
         <Route path='settings' component={Settings} onEnter={requireAuth}/>
-        <Route path='/login' component={Login}/>
       </Route>
     </Router>
   </Provider>

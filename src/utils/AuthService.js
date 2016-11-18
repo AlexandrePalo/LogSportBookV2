@@ -8,19 +8,14 @@ export default class AuthService {
   constructor(clientId, domain) {
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {})
-    // Add callback for lock `authenticated` event
     this.lock.on('authenticated', this._doAuthentication.bind(this))
-    // binds login functions to keep this context
     this.login = this.login.bind(this)
   }
 
+  // unused with custom login form
   _doAuthentication(authResult){
     // Saves the user token
     this.setToken(authResult.idToken)
-    // Set the current user (sync needed !)
-    fetchUser(authResult.idToken).then((json) => {
-      localStorage.setItem('user_id', json.response.user_id)
-    })
   }
 
   login() {
@@ -30,8 +25,14 @@ export default class AuthService {
 
   loggedIn(){
     // Checks if there is a saved token and it's still valid
+    // Check if there is a savec profile
     const token = this.getToken()
-    return !!token && !isTokenExpired(token)
+    const profile = this.getProfile()
+    return (!!token && !isTokenExpired(token)) && !!profile
+  }
+
+  setProfile(profile){
+    localStorage.setItem('profile', profile)
   }
 
   setToken(idToken){
@@ -43,8 +44,12 @@ export default class AuthService {
     return localStorage.getItem('id_token')
   }
 
+  getProfile(){
+    return localStorage.getItem('profile')
+  }
+
   logout(){
     localStorage.removeItem('id_token')
-    localStorage.removeItem('user_id')
+    localStorage.removeItem('profile')
   }
 }

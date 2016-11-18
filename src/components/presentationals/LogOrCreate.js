@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import AddUser from './AddUser'
-import ConnectionForm from './ConnectionForm'
+import ConnectionForm from '../containers/ConnectionForm'
 
 const LogOrCreate = () => {
   return (

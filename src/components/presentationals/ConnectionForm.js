@@ -1,12 +1,23 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 export default class ConnectionForm extends Component {
 
   constructor (props, context) {
     super(props)
     this.state = {
-      email: '',
+      username: '',
       password: ''
+    }
+  }
+
+  static contextTypes = {
+    router: PropTypes.object
+  }
+
+  componentWillReceiveProps (nextProps) {
+    // If a user is now connected, let's redirect to the next page
+    if (nextProps.userIsAuthenticated) {
+      nextProps.next ? this.context.router.push(next) : this.context.router.push('/')
     }
   }
 
@@ -30,10 +41,10 @@ export default class ConnectionForm extends Component {
         <div className='panel-body'>
           <form>
             <div className="form-group" style={style.input}>
-              <label htmlFor="inputEmail">E-mail</label>
-              <input type="text" className="form-control" id="inputEmail"
+              <label htmlFor="inputUsername">Nom d'utilisateur</label>
+              <input type="text" className="form-control" id="inputUsername"
                 style={style.inputText}
-                onChange={(e) => { this.setState({ email: e.target.value })} }/>
+                onChange={(e) => { this.setState({ username: e.target.value })} }/>
             </div>
             <div className="form-group" style={style.input}>
               <label htmlFor="inputPassword">Mot de passe</label>
@@ -41,13 +52,18 @@ export default class ConnectionForm extends Component {
                 style={style.inputText}
                 onChange={(e) => { this.setState({ password: e.target.value })} }/>
             </div>
-            <button type="button" className="btn btn-success btn-block"
+            {this.props.loginIsRequested ?
+              (<button type="button" className="btn btn-success btn-block">Chargement ...</button>) :
+            (<button type="button" className="btn btn-success btn-block"
               onClick={() => {
-                console.log('login')
-                this.context.router.push('/')
+                this.props.login({
+                  username: this.state.username,
+                  password: this.state.password
+                })
               }}>
-                Valider
-            </button>
+                Login
+            </button>)
+            }
           </form>
         </div>
       </div>

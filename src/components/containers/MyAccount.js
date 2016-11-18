@@ -6,7 +6,6 @@ import * as actions from '../../actions/index'
 
 class MyAccountL extends Component {
   componentDidMount () {
-    console.log(this.props.userId)
     this.fetchData()
   }
 

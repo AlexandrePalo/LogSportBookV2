@@ -90,28 +90,6 @@ export const removeSerie = (idTraining, idExerciseBlock, idSerie) => ({
   serieId: idSerie
 })
 
-export const createSession = (sessionToken) => ({
-  type: 'CREATE_SESSION',
-  sessionToken
-})
-
-export const removeSession = () => ({
-  type: 'REMOVE_SESSION'
-})
-
-export const fetchUser = (sessionToken) =>
-  api.fetchUser(sessionToken).then(response =>
-    receiveUser(response))
-
-export const receiveUser = (response) => ({
-  type: 'RECEIVE_USER',
-  response
-})
-
-export const requestUser = () => ({
-  type: 'REQUEST_USER'
-})
-
 export const fetchTrainings = (userId) => (dispatch) => {
   dispatch(requestTrainings())
   return api.fetchTrainings(userId).then(response => {
@@ -142,3 +120,33 @@ export const requestExerciseBlocks = (trainingId) => ({
   type: 'REQUEST_EXERCISEBLOCKS',
   id: trainingId
 })
+
+const requestLogin = (creds) => ({
+  type: 'LOGIN_REQUEST',
+  creds
+})
+
+const receiveLogin = (user) => ({
+  type: 'LOGIN_SUCCESS',
+  tokenId: user.tokenId,
+  accessToken: user.accessToken,
+  profile: user.profile
+})
+
+const failLogin = (message) => ({
+  type: 'LOGIN_FAILURE',
+  message
+})
+
+export const loginUser = (creds) => (dispatch) => {
+  dispatch(requestLogin(creds))
+  api.fetchLogin(creds).then(response => {
+    return api.fetchProfile(response.access_token).then(profile => {
+      dispatch(receiveLogin({
+        profile,
+        accessToken: response.access_token,
+        tokenId: response.id_token
+      }))
+    })
+  })
+}

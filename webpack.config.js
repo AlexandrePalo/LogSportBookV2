@@ -1,3 +1,6 @@
+var path = require('path');
+var webpack = require('webpack');
+
 module.exports = {
   entry: [
     './src/index.js'
@@ -7,6 +10,14 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env':{
+        
+      }
+    }),
+  ],
+
   module: {
     loaders: [{
       exclude: /node_modules/,

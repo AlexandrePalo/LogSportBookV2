@@ -39,9 +39,9 @@ class Header extends React.Component {
                 ? <li><p className="navbar-text"><i className="fa fa-sign-out" onClick={
                   () => {
                     props.auth.logout()
-                    this.context.router.push('/login')}
+                    this.context.router.push('/start/login')}
                 }></i></p></li>
-                : <li><Link to='/login'><i className="fa fa-sign-in"></i></Link></li>}
+                : <li><Link to='/start/login'><i className="fa fa-sign-in"></i></Link></li>}
             </ul>
           </div>
         </div>
