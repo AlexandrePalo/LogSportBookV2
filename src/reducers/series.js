@@ -6,11 +6,11 @@ const byId = (state = {}, action) => {
   case 'RECEIVE_SERIES':
     var newState = {}
     action.response.forEach((serie) => {
-      console.log(serie)
       newState = {
         ...newState,
         [serie._id]: {
           id: serie._id,
+          isFetching: false,
           load: serie.load,
           repetitions: serie.repetitions,
           index: serie.index
@@ -34,6 +34,10 @@ const allIds = (state = [], action) => {
 
 const isFetching = (state = false, action) => {
   switch (action.type) {
+  case 'REQUEST_SERIES':
+    return true
+  case 'RECEIVE_SERIES':
+    return false
   default:
     return state
   }

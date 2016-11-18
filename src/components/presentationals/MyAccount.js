@@ -47,22 +47,28 @@ class MyAccount extends Component {
                     <th></th>
                   </tr>
                 </thead>
-                <tbody>
-                  {props.trainings.map((t) => {
-                    let date_begin = moment(t.date_begin)
-                    let date_end = moment(t.date_end)
-                    return (
-                      <Training
-                        description={t.description}
-                        date_begin={date_begin}
-                        number_exerciseBlocks={t.exerciseBlocks.allIds.length}
-                        duration={moment.duration(date_end.diff(date_begin))}
-                        key={t.id}
-                        id={t.id}
-                      />
-                    )
-                  })}
-                </tbody>
+                {
+                  props.isFetchingTrainings ?
+                  (<tbody>Loading ...</tbody>) :
+                  (
+                    <tbody>
+                      {props.trainings.map((t) => {
+                        let date_begin = moment(t.date_begin)
+                        let date_end = moment(t.date_end)
+                        return (
+                          <Training
+                            description={t.description}
+                            date_begin={date_begin}
+                            number_exerciseBlocks={t.exerciseBlocks.allIds.length}
+                            duration={moment.duration(date_end.diff(date_begin))}
+                            key={t.id}
+                            id={t.id}
+                          />
+                        )
+                      })}
+                    </tbody>
+                  )
+                }
               </table>
             </div>
           </div>

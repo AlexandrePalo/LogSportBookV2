@@ -23,6 +23,7 @@ class MyAccountL extends Component {
 const mapStateToProps = (state) => {
   return {
     trainings: getAllTrainings(state),
+    isFetchingTrainings: state.trainings.isFetching,
     userId: state.user.profile.user_id
   }
 }

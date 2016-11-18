@@ -18,20 +18,24 @@ export default class ExerciseBlockBoard extends Component {
                 <th></th>
               </tr>
             </thead>
-            <tbody>
-              {props.series.map((s) => {
-                return(
-                <Serie
-                  repetitions={s.repetitions}
-                  load={s.load}
-                  id={s.id}
-                  exerciseBlock={props.params.exerciseBlock}
-                  training={props.params.training}
-                  key={s.id}
-                />
-              )}
-              )}
-            </tbody>
+            {
+              props.isFetchingSeries ?
+              (<tbody>Loading ...</tbody>) :
+              (<tbody>
+                {props.series.map((s) => {
+                  return(
+                  <Serie
+                    repetitions={s.repetitions}
+                    load={s.load}
+                    id={s.id}
+                    exerciseBlock={props.params.exerciseBlock}
+                    training={props.params.training}
+                    key={s.id}
+                  />
+                  )}
+                )}
+              </tbody>)
+            }
           </table>
         </div>
         <div className='row'>

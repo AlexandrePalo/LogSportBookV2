@@ -17,7 +17,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     trainingId: training.id,
     description: training.description,
-    exerciseBlocks: getAllExerciseBlocksOneTraining(state, training.id)
+    exerciseBlocks: getAllExerciseBlocksOneTraining(state, training.id),
+    isFetchingExerciseBlocks: training.exerciseBlocks.isFetching
   }
 }
 

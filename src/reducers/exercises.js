@@ -14,6 +14,7 @@ const byId = (state = {}, action) => {
     action.response.forEach((e) => {
       newState[e._id] = {
         id: e._id,
+        isFetching: false,
         name: e.name
       }
     })

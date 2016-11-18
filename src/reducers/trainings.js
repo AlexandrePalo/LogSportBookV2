@@ -13,6 +13,7 @@ const byId = (state = {}, action) => {
           ...newStateExerciseBlocks.byId,
           [eb._id]: {
             id: eb._id,
+            isFetching: false,
             exercise: {
               id: eb._exercise._id,
               name: eb._exercise.name,
@@ -30,6 +31,7 @@ const byId = (state = {}, action) => {
 
       newState[t._id] = {
         id: t._id,
+        isFetching: false,
         description: t.description,
         place: t.place,
         date_begin: moment(t.date_begin),
@@ -44,6 +46,7 @@ const byId = (state = {}, action) => {
       ...state,
       [action.response._id]: {
         id: res._id,
+        isFetching: false,
         description: res.description,
         place: res.place,
         date_begin: moment(res.date_begin),

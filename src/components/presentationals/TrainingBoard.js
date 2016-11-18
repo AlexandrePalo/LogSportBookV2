@@ -22,20 +22,24 @@ class TrainingBoard extends Component {
                 <th></th>
               </tr>
             </thead>
-            <tbody>
-              {props.exerciseBlocks.map((e) => {
-                return (
-                  <ExerciseBlock
-                    key={e.id}
-                    exercise={e.exercise}
-                    numberSeries={e.series.allIds.length}
-                    duration='20'
-                    training={props.params.training}
-                    id={e.id}
-                  />
-                )
-              })}
-            </tbody>
+            {
+              props.isFetchingExerciseBlocks ?
+              (<tbody>Loading ...</tbody>) :
+              (<tbody>
+                {props.exerciseBlocks.map((e) => {
+                  return (
+                    <ExerciseBlock
+                      key={e.id}
+                      exercise={e.exercise}
+                      numberSeries={e.series.allIds.length}
+                      duration='20'
+                      training={props.params.training}
+                      id={e.id}
+                    />
+                  )
+                })}
+              </tbody>)
+            }
           </table>
         </div>
         <div className='row'>

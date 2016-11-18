@@ -21,6 +21,7 @@ class ExerciseBlockBoardL extends Component {
 const mapStateToProps = (state, ownProps) => {
   const exerciseBlock = state.trainings.byId[ownProps.params.training].exerciseBlocks.byId[ownProps.params.exerciseBlock]
   return {
+    isFetchingSeries: exerciseBlock.series.isFetching,
     name: exerciseBlock.exercise.name,
     series: getAllSeriesOneExerciseBlock(state, ownProps.params.training, exerciseBlock.id)
   }
