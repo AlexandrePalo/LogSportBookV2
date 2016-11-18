@@ -22,7 +22,7 @@ class Layout extends Component {
     if (props.profile) {
       return (
         <div>
-          <Header user_id={props.user_id} avatar={props.avatar} auth={props.route.auth}/>
+          <Header nickname={props.profile.nickname} picture={props.profile.picture} auth={props.route.auth}/>
           <div className='container'>
             {children}
           </div>
@@ -34,7 +34,7 @@ class Layout extends Component {
       loginUserWithSession(localStorage.getItem('access_token'))
       return (
         <div>
-          <Header user_id={props.user_id} avatar={props.avatar} auth={props.route.auth}/>
+          <Header auth={props.route.auth}/>
           <div className='container'>
             <p>Loading profile ...</p>
           </div>
