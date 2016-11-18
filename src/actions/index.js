@@ -102,3 +102,41 @@ export const removeTraining = (trainingId) => (dispatch) =>
       response
     })
   })
+
+export const addExerciseBlock = (exerciseBlock, trainingId) => (dispatch) =>
+  api.addExerciseBlock(exerciseBlock, trainingId).then(response => {
+    dispatch({
+      type: 'ADD_EXERCISEBLOCK_SUCCESS',
+      response,
+      trainingId
+    })
+  })
+
+export const removeExerciseBlock = (exerciseBlockId, trainingId) => (dispatch) =>
+  api.removeExerciseBlock(exerciseBlockId).then(response => {
+    dispatch({
+      type: 'REMOVE_EXERCISEBLOCK_SUCCESS',
+      response,
+      trainingId
+    })
+  })
+
+export const addSerie = (serie, trainingId, exerciseBlockId) => (dispatch) =>
+  api.addSerie(serie, exerciseBlockId).then(response => {
+    dispatch({
+      type: 'ADD_SERIE_SUCCESS',
+      response,
+      trainingId,
+      exerciseBlockId
+    })
+  })
+
+export const removeSerie = (serieId, trainingId, exerciseBlockId) => (dispatch) =>
+  api.removeSerie(serieId).then(response => {
+    dispatch({
+      type: 'REMOVE_SERIE_SUCCESS',
+      response,
+      trainingId,
+      exerciseBlockId
+    })
+  })

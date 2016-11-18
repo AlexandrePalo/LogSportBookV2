@@ -18,7 +18,7 @@ export default class ExerciseBlock extends Component {
         <td>{props.duration}</td>
         <td
           onClick={() =>
-            props.removeExerciseBlock(props.training, props.id)
+            props.removeExerciseBlock(props.id, props.training)
           }><i className="fa fa-trash" aria-hidden="true"></i>
         </td>
       </tr>

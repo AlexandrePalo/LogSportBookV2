@@ -18,6 +18,22 @@ const byId = (state = {}, action) => {
       }
     })
     return newState
+  case 'ADD_SERIE_SUCCESS':
+    var res = action.response
+    return {
+      ...state,
+      [res._id]: {
+        id: res._id,
+        isFetching: false,
+        index: res.index,
+        load: res.load,
+        repetitions: res.repetitions
+      }
+    }
+  case 'REMOVE_SERIE_SUCCESS':
+    var s = Object.assign({}, state)
+    delete s[action.response._id]
+    return s
   default:
     return state
   }
@@ -27,6 +43,11 @@ const allIds = (state = [], action) => {
   switch (action.type) {
   case 'RECEIVE_SERIES':
     return action.response.map((serie) => serie._id)
+  case 'ADD_SERIE_SUCCESS':
+    return [...state, action.response._id]
+  case 'REMOVE_SERIE_SUCCESS':
+    var index = state.indexOf(action.response._id)
+    return state.slice(0, index).concat(state.slice(index + 1))
   default:
     return state
   }

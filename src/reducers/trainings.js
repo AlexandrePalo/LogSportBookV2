@@ -22,7 +22,11 @@ const byId = (state = {}, action) => {
             date_begin: moment(eb.date_begin),
             date_end: moment(eb.date_end),
             index: eb.index,
-            series: {byId: {}, allIds: []}
+            series: {
+              byId: {},
+              allIds: [],
+              isFetching: false
+            }
           }
         }
       })
@@ -63,6 +67,10 @@ const byId = (state = {}, action) => {
     return t
   case 'REQUEST_SERIES':
   case 'RECEIVE_SERIES':
+  case 'ADD_EXERCISEBLOCK_SUCCESS':
+  case 'ADD_SERIE_SUCCESS':
+  case 'REMOVE_EXERCISEBLOCK_SUCCESS':
+  case 'REMOVE_SERIE_SUCCESS':
     return {
       ...state,
       [action.trainingId]: training(state[action.trainingId], action)

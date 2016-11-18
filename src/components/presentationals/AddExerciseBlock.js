@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { v4 } from 'node-uuid'
+import moment from 'moment'
 
 class AddExerciseBlock extends Component {
   render () {
@@ -20,9 +20,12 @@ class AddExerciseBlock extends Component {
           </select>
         </div>
         <button type='button' className='btn btn-block btn-primary' onClick={() => {
-          let id = v4()
-          props.addExerciseBlock(props.id, props.byId[inputExercise.value], id)
-          this.context.router.push('/trainings/' + props.id + '/exerciseblocks/' + id)
+          props.addExerciseBlock({
+            exerciseId: inputExercise.value,
+            index: 0,
+            date_begin: moment(),
+            date_end: moment()
+          }, props.id)
         }}>Nouvel exercice</button>
       </form>
     )

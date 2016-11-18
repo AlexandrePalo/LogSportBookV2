@@ -10,7 +10,7 @@ export default class Serie extends Component {
         <td>{props.load}</td>
         <td>
         <i className="fa fa-trash" aria-hidden="true" onClick={() =>
-          props.removeSerie(props.training, props.exerciseBlock, props.id)
+          props.removeSerie(props.id, props.training, props.exerciseBlock)
         }></i>
         </td>
       </tr>

@@ -35,7 +35,11 @@ class AddSerie extends Component {
           </div>
         </div>
         <button className='btn btn-block btn-primary' type='button' onClick={() =>
-          props.addSerie(props.training, props.id, Number(this.state.rep), Number(this.state.load))
+          props.addSerie({
+            repetitions: Number(this.state.rep),
+            load: Number(this.state.load),
+            index: 0
+          }, props.training, props.id)
         }>Nouvelle série</button>
         <button className='btn btn-danger btn-block' type='button' onClick={() =>
           this.context.router.push('/trainings/' + props.training)

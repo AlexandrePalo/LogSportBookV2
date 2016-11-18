@@ -81,6 +81,75 @@ export const removeTraining = (trainingId) =>
     })
   })
 
+export const addExerciseBlock = (exerciseBlock, trainingId) =>
+  fetch(baseUrlApi + '/exerciseblocks',
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        _training: trainingId,
+        _exercise: exerciseBlock.exerciseId,
+        index: exerciseBlock.index,
+        date_begin: exerciseBlock.date_begin,
+        date_end: exerciseBlock.date_end
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  ).then(function(response) {
+    return response.json().then(function(json) {
+      return json
+    })
+  })
+
+export const removeExerciseBlock = (exerciseBlockId) =>
+  fetch(baseUrlApi + '/exerciseblocks/' + exerciseBlockId,
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  ).then(function(response) {
+    return response.json().then(function(json) {
+      return json
+    })
+  })
+
+export const addSerie = (serie, exerciseBlockId) =>
+  fetch(baseUrlApi + '/series',
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        _exerciseBlock: exerciseBlockId,
+        load: serie.load,
+        repetitions: serie.repetitions,
+        index: serie.index
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  ).then(function(response) {
+    return response.json().then(function(json) {
+      return json
+    })
+  })
+
+export const removeSerie = (serieId) =>
+  fetch(baseUrlApi + '/series/' + serieId,
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  ).then(function(response) {
+    return response.json().then(function(json) {
+      return json
+    })
+  })
+
 export const fetchSeries = (exerciseBlockId) =>
   fetch(baseUrlApi + '/series?_exerciseBlock=' + exerciseBlockId).then(function(response) {
     return response.json().then(function(json) {
