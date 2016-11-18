@@ -5,13 +5,6 @@ const baseUrlApi = process.env.BASE_URL_API
 const baseUrlApiAuth0 = process.env.BASE_URL_AUTH0
 const clientId = process.env.CLIENT_ID
 
-export const fetchExercises = () =>
-  fetch(baseUrlApi + '/exercises').then(function(response) {
-    return response.json().then(function(json) {
-      return json
-    })
-  })
-
 export const fetchLogin = (creds) =>
   fetch(baseUrlApiAuth0 + '/oauth/ro',
     {
@@ -53,8 +46,36 @@ export const fetchTrainings = (userId) =>
     })
   })
 
+export const addTraining = (training, userId) =>
+  fetch(baseUrlApi + '/trainings',
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        user: userId,
+        description: training.description,
+        place: training.place,
+        date_begin: training.date_begin,
+        date_end: training.date_end,
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  ).then(function(response) {
+    return response.json().then(function(json) {
+      return json
+    })
+  })
+
 export const fetchExerciseBlocks = (trainingId) =>
   fetch(baseUrlApi + '/exerciseblocks?training=' + trainingId).then(function(response) {
+    return response.json().then(function(json) {
+      return json
+    })
+  })
+
+export const fetchExercises = () =>
+  fetch(baseUrlApi + '/exercises').then(function(response) {
     return response.json().then(function(json) {
       return json
     })

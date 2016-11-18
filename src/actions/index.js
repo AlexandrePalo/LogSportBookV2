@@ -24,23 +24,6 @@ export const addExerciseBlock = (idTraining, exercise, idExerciseBlock=v4()) => 
 })
 
 /**
- * Action creator add training
- * @param {string} idTraining - The id of the training which will be created, if not sent a new one will be generated with v4()
- * @param {string} description - Description of the training
- * @param {string} place - Place of the training
- * @param {moment} date_begin - Date of the begining of the training
- * @param {moment} date_end - Date of the end of the training
- */
-export const addTraining = (description, place, date_begin, date_end, idTraining=v4()) => ({
-  type: 'ADD_TRAINING',
-  id: idTraining,
-  description,
-  place,
-  date_begin,
-  date_end
-})
-
-/**
  * Action creator add serie
  * @param {string} idTraining - The id of the training in which the serie belongs to
  * @param {string} idExerciseBlock - The id of the exercise block in which the serie belongs to
@@ -161,3 +144,11 @@ export const loginUserWithSession = (accessToken) => (dispatch) => {
     }))
   })
 }
+
+export const addTraining = (training, userId) => (dispatch) =>
+  api.addTraining(training, userId).then(response => {
+    dispatch({
+      type: 'ADD_TRAINING_SUCCESS',
+      response
+    })
+  })

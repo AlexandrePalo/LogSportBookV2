@@ -50,6 +50,22 @@ const byId = (state = {}, action) => {
       }
     })
     return newState
+  case 'ADD_TRAINING_SUCCESS':
+    var res = action.response
+    return {
+      ...state,
+      [action.response._id]: {
+        id: res._id,
+        description: res.description,
+        place: res.place,
+        date_begin: moment(res.date_begin),
+        date_end: moment(res.date_end),
+        exerciseBlocks: {
+          allIds: [],
+          byId: {}
+        }
+      }
+    }
   default:
     return state
   }
@@ -64,6 +80,8 @@ const allIds = (state = [], action) => {
     return state.slice(0, index).concat(state.slice(index + 1))
   case 'RECEIVE_TRAININGS':
     return action.response.map(t => t._id)
+  case 'ADD_TRAINING_SUCCESS':
+    return [...state, action.response._id]
   default:
     return state
   }

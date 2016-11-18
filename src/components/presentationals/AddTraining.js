@@ -67,15 +67,12 @@ class AddTraining extends Component {
         </div>
         <button className='btn btn-block btn-success' type='button' data-dismiss="modal"
           onClick={() => {
-            let id = v4()
-            props.addTraining(
-              this.state.description,
-              this.state.place,
-              moment(this.state.date_begin, 'DD/MM/YY HH:mm'),
-              moment(this.state.date_end, 'DD/MM/YY HH:mm'),
-              id
-            )
-            this.context.router.push('/trainings/' + id)
+            props.addTraining({
+              description: this.state.description,
+              place: this.state.place,
+              date_end: this.state.date_end,
+              date_begin: this.state.date_begin
+            }, props.userId)
           }
         }>Nouvel entrainement</button>
       </form>
