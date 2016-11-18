@@ -3,15 +3,21 @@ import { combineReducers } from 'redux'
 
 const byId = (state = {}, action) => {
   switch (action.type) {
-  case 'ADD_SERIE':
-    return {
-      ...state,
-      [action.id]: serie(state[action.id], action)
-    }
-  case 'REMOVE_SERIE':
-    var s = Object.assign({}, state)
-    delete s[action.id]
-    return s
+  case 'RECEIVE_SERIES':
+    var newState = {}
+    action.response.forEach((serie) => {
+      console.log(serie)
+      newState = {
+        ...newState,
+        [serie._id]: {
+          id: serie._id,
+          load: serie.load,
+          repetitions: serie.repetitions,
+          index: serie.index
+        }
+      }
+    })
+    return newState
   default:
     return state
   }
@@ -19,11 +25,8 @@ const byId = (state = {}, action) => {
 
 const allIds = (state = [], action) => {
   switch (action.type) {
-  case 'ADD_SERIE':
-    return [...state, action.id]
-  case 'REMOVE_SERIE':
-    var index = state.indexOf(action.id)
-    return state.slice(0, index).concat(state.slice(index + 1))
+  case 'RECEIVE_SERIES':
+    return action.response.map((serie) => serie._id)
   default:
     return state
   }
@@ -31,10 +34,6 @@ const allIds = (state = [], action) => {
 
 const isFetching = (state = false, action) => {
   switch (action.type) {
-  case 'REQUEST_SERIES':
-    return true
-  case 'RECEIVE_SERIES':
-    return false
   default:
     return state
   }

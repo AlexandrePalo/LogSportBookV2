@@ -1,24 +1,12 @@
 import { combineReducers } from 'redux'
 import training from './training'
-import { v4 } from 'node-uuid'
 import moment from 'moment'
 
 const byId = (state = {}, action) => {
   switch (action.type) {
-  case 'ADD_EXERCISEBLOCK':
-  case 'ADD_SERIE':
-  case 'REMOVE_EXERCISEBLOCK':
-  case 'REMOVE_SERIE':
-  case 'REQUEST_EXERCISEBLOCKS':
-  case 'RECEIVE_EXERCISEBLOCKS':
-    return {
-      ...state,
-      [action.id]: training(state[action.id], action)
-    }
   case 'RECEIVE_TRAININGS':
     var newState = {}
     action.response.forEach((t) => {
-
       var newStateExerciseBlocks = {byId: {}, allIds: []}
       t.exerciseBlocks.forEach((eb) => {
         newStateExerciseBlocks.byId = {
@@ -38,6 +26,7 @@ const byId = (state = {}, action) => {
         }
       })
       newStateExerciseBlocks.allIds = t.exerciseBlocks.map(eb => eb._id)
+      newStateExerciseBlocks.isFetching = false
 
       newState[t._id] = {
         id: t._id,
@@ -69,6 +58,12 @@ const byId = (state = {}, action) => {
     var t = Object.assign({}, state)
     delete t[action.response._id]
     return t
+  case 'REQUEST_SERIES':
+  case 'RECEIVE_SERIES':
+    return {
+      ...state,
+      [action.trainingId]: training(state[action.trainingId], action)
+    }
   default:
     return state
   }

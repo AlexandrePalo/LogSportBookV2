@@ -5,7 +5,7 @@ import React, { Component, PropTypes } from 'react'
 import Layout from './Layout'
 import MyAccountL from './MyAccount'
 import TrainingBoardL from './TrainingBoard'
-import VisibleExerciseBlockBoard from './VisibleExerciseBlockBoard'
+import ExerciseBlockBoardL from './ExerciseBlockBoard'
 
 import LayoutBegin from '../presentationals/LayoutBegin'
 import Begin from '../presentationals/Begin'
@@ -43,7 +43,7 @@ class Root extends Component {
             <Route path='/trainings/:training' component={TrainingBoardL}>
               <IndexRoute/>
               <Route path='/trainings/:training/exerciseblocks/:exerciseBlock'
-                component={VisibleExerciseBlockBoard}
+                component={ExerciseBlockBoardL}
                 onEnter={requireAuth}/>
             </Route>
             <Route path='settings' component={Settings} onEnter={requireAuth}/>

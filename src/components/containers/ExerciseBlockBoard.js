@@ -1,7 +1,22 @@
 import ExerciseBlockBoard from '../presentationals/ExerciseBlockBoard'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getAllExerciseBlocksOneTraining } from '../../reducers/index'
 import { getAllSeriesOneExerciseBlock } from '../../reducers/index'
+import * as actions from '../../actions/index'
+
+class ExerciseBlockBoardL extends Component {
+
+  componentDidMount () {
+    const { fetchSeries } = this.props
+    fetchSeries(this.props.params.training, this.props.params.exerciseBlock)
+  }
+
+  render () {
+    let { ...rest } = this.props
+    return <ExerciseBlockBoard {...rest}/>
+  }
+}
 
 const mapStateToProps = (state, ownProps) => {
   const exerciseBlock = state.trainings.byId[ownProps.params.training].exerciseBlocks.byId[ownProps.params.exerciseBlock]
@@ -11,9 +26,9 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const VisibleExerciseBlockBoard = connect(
+ExerciseBlockBoardL = connect(
   mapStateToProps,
-  null
-)(ExerciseBlockBoard)
+  actions
+)(ExerciseBlockBoardL)
 
-export default VisibleExerciseBlockBoard
+export default ExerciseBlockBoardL

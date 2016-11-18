@@ -10,60 +10,6 @@ const receiveExercises = (response) => ({
   response
 })
 
-/**
- * Action creator add exercise block
- * @param {string} idTraining - The id of the training in which the exercise block will belongs to
- * @param {object} exercise - Exercise corresponding to the exercise block
- * @param {string} idExerciseBlock - The id of the exercise block which will be created, if not sent a new one will be generated with v4()
- */
-export const addExerciseBlock = (idTraining, exercise, idExerciseBlock=v4()) => ({
-  type: 'ADD_EXERCISEBLOCK',
-  id: idTraining,
-  exerciseBlockId: idExerciseBlock,
-  exercise: exercise
-})
-
-/**
- * Action creator add serie
- * @param {string} idTraining - The id of the training in which the serie belongs to
- * @param {string} idExerciseBlock - The id of the exercise block in which the serie belongs to
- * @param {number} repetitions - Number of repetitions in the serie
- * @param {number} load - Load of the serie
- * @param {string} idSerie - The id of the serie which will be created, if none one will be generated with v4()
- */
-export const addSerie = (idTraining, idExerciseBlock, repetitions, load, idSerie=v4()) => ({
-  type: 'ADD_SERIE',
-  id: idTraining,
-  exerciseBlockId: idExerciseBlock,
-  repetitions,
-  load,
-  idSerie,
-})
-
-/**
- * Action creator remove exercise block
- * @param {string} idTraining - The id of the training in which the exercise block will be deleted
- * @param {string} idExerciseBlock - The id of the exercise block which will be deleted
- */
-export const removeExerciseBlock = (idTraining, idExerciseBlock) => ({
-  type: 'REMOVE_EXERCISEBLOCK',
-  id: idTraining,
-  exerciseBlockId: idExerciseBlock
-})
-
-/**
- * Action creator remove serie
- * @param {string} idTraining - The id of the training in which the serie will be deleted
- * @param {string} idExerciseBlock - The id of the exercise block in which the serie will be deleted
- * @param {string} idSerie - The id of the serie which will be deleted
- */
-export const removeSerie = (idTraining, idExerciseBlock, idSerie) => ({
-  type: 'REMOVE_SERIE',
-  id: idTraining,
-  exerciseBlockId: idExerciseBlock,
-  serieId: idSerie
-})
-
 export const fetchTrainings = (userId) => (dispatch) => {
   dispatch(requestTrainings())
   return api.fetchTrainings(userId).then(response => {
@@ -80,19 +26,24 @@ const requestTrainings = () => ({
   type: 'REQUEST_TRAININGS'
 })
 
-export const fetchExerciseBlocks = (trainingId) =>
-  api.fetchExerciseBlocks(trainingId).then(response =>
-    receiveExerciseBlocks(response, trainingId))
+export const fetchSeries = (trainingId, exerciseBlockId) => (dispatch) => {
+  dispatch(requestSeries(trainingId, exerciseBlockId))
+  return api.fetchSeries(exerciseBlockId).then(response => {
+    dispatch(receiveSeries(trainingId, exerciseBlockId, response))
+  })
+}
 
-export const receiveExerciseBlocks = (response, trainingId) => ({
-  type: 'RECEIVE_EXERCISEBLOCKS',
+const receiveSeries = (trainingId, exerciseBlockId, response) => ({
+  type: 'RECEIVE_SERIES',
   response,
-  id: trainingId
+  trainingId,
+  exerciseBlockId
 })
 
-export const requestExerciseBlocks = (trainingId) => ({
-  type: 'REQUEST_EXERCISEBLOCKS',
-  id: trainingId
+const requestSeries = (trainingId, exerciseBlockId) => ({
+  type: 'REQUEST_SERIES',
+  trainingId,
+  exerciseBlockId
 })
 
 const requestLogin = (creds) => ({

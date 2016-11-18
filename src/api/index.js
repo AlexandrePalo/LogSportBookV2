@@ -81,8 +81,8 @@ export const removeTraining = (trainingId) =>
     })
   })
 
-export const fetchExerciseBlocks = (trainingId) =>
-  fetch(baseUrlApi + '/exerciseblocks?training=' + trainingId).then(function(response) {
+export const fetchSeries = (exerciseBlockId) =>
+  fetch(baseUrlApi + '/series?_exerciseBlock=' + exerciseBlockId).then(function(response) {
     return response.json().then(function(json) {
       return json
     })

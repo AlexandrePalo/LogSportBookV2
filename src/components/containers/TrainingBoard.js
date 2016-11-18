@@ -6,16 +6,6 @@ import { getAllExerciseBlocksOneTraining } from '../../reducers/index'
 import * as actions from '../../actions/index'
 
 class TrainingBoardL extends Component {
-  componentDidMount () {
-    //this.fetchData()
-  }
-
-  fetchData () {
-    const { fetchExerciseBlocks, requestExerciseBlocks, trainingId } = this.props
-    requestExerciseBlocks(trainingId)
-    fetchExerciseBlocks(trainingId)
-  }
-
   render () {
     let { ...rest } = this.props
     return <TrainingBoard {...rest}/>
