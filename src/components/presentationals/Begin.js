@@ -14,7 +14,7 @@ const Begin = () => {
           <h1 style={{ color: 'white', fontSize: '60pt', textAlign: 'center' }}>LogSportBook</h1>
           <p style={{ color: 'white', fontSize: '30pt', textAlign: 'center' }}>Fixez des objectifs. Suivez vos performances. Restez motivé.</p>
         </div>
-        <Link to='start/log'>
+        <Link to='start/login'>
           <button className='btn btn-success btn-lg btn-block' type='button'>
             Commencer
           </button>
