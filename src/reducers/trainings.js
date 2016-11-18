@@ -9,17 +9,12 @@ const byId = (state = {}, action) => {
   case 'ADD_SERIE':
   case 'REMOVE_EXERCISEBLOCK':
   case 'REMOVE_SERIE':
-  case 'ADD_TRAINING':
   case 'REQUEST_EXERCISEBLOCKS':
   case 'RECEIVE_EXERCISEBLOCKS':
     return {
       ...state,
       [action.id]: training(state[action.id], action)
     }
-  case 'REMOVE_TRAINING':
-    var t = Object.assign({}, state)
-    delete t[action.id]
-    return t
   case 'RECEIVE_TRAININGS':
     var newState = {}
     action.response.forEach((t) => {
@@ -66,6 +61,10 @@ const byId = (state = {}, action) => {
         }
       }
     }
+  case 'REMOVE_TRAINING_SUCESS':
+    var t = Object.assign({}, state)
+    delete t[action.response._id]
+    return t
   default:
     return state
   }
@@ -73,15 +72,13 @@ const byId = (state = {}, action) => {
 
 const allIds = (state = [], action) => {
   switch (action.type) {
-  case 'ADD_TRAINING':
-    return [...state, action.id]
-  case 'REMOVE_TRAINING':
-    var index = state.indexOf(action.id)
-    return state.slice(0, index).concat(state.slice(index + 1))
   case 'RECEIVE_TRAININGS':
     return action.response.map(t => t._id)
   case 'ADD_TRAINING_SUCCESS':
     return [...state, action.response._id]
+  case 'REMOVE_TRAINING_SUCCESS':
+    var index = state.indexOf(action.response._id)
+    return state.slice(0, index).concat(state.slice(index + 1))
   default:
     return state
   }

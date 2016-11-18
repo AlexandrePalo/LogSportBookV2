@@ -67,6 +67,20 @@ export const addTraining = (training, userId) =>
     })
   })
 
+export const removeTraining = (trainingId) =>
+  fetch(baseUrlApi + '/trainings/' + trainingId,
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  ).then(function(response) {
+    return response.json().then(function(json) {
+      return json
+    })
+  })
+
 export const fetchExerciseBlocks = (trainingId) =>
   fetch(baseUrlApi + '/exerciseblocks?training=' + trainingId).then(function(response) {
     return response.json().then(function(json) {

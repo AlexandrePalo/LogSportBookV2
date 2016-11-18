@@ -41,15 +41,6 @@ export const addSerie = (idTraining, idExerciseBlock, repetitions, load, idSerie
 })
 
 /**
- * Action creator remove training
- * @param {string} idTraining - The id of the training which will be deleted
- */
-export const removeTraining = (idTraining) => ({
-  type: 'REMOVE_TRAINING',
-  id: idTraining
-})
-
-/**
  * Action creator remove exercise block
  * @param {string} idTraining - The id of the training in which the exercise block will be deleted
  * @param {string} idExerciseBlock - The id of the exercise block which will be deleted
@@ -149,6 +140,14 @@ export const addTraining = (training, userId) => (dispatch) =>
   api.addTraining(training, userId).then(response => {
     dispatch({
       type: 'ADD_TRAINING_SUCCESS',
+      response
+    })
+  })
+
+export const removeTraining = (trainingId) => (dispatch) =>
+  api.removeTraining(trainingId).then(response => {
+    dispatch({
+      type: 'REMOVE_TRAINING_SUCCESS',
       response
     })
   })
