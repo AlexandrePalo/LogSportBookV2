@@ -19,13 +19,17 @@ const byId = (state = {}, action) => {
     var newState = {}
     action.response.forEach((t) => {
 
-      var newStateEexerciseBlocks = {byId: {}, allIds: []}
+      var newStateExerciseBlocks = {byId: {}, allIds: []}
       t.exerciseBlocks.forEach((eb) => {
-        newStateEexerciseBlocks.byId = {
-          ...newStateEexerciseBlocks.byId,
+        newStateExerciseBlocks.byId = {
+          ...newStateExerciseBlocks.byId,
           [eb._id]: {
             id: eb._id,
-            place: eb.place,
+            exercise: {
+              id: eb._exercise._id,
+              name: eb._exercise.name,
+              muscularGroup: eb._exercise.muscularGroup
+            },
             date_begin: moment(eb.date_begin),
             date_end: moment(eb.date_end),
             index: eb.index,
@@ -33,7 +37,7 @@ const byId = (state = {}, action) => {
           }
         }
       })
-      newStateEexerciseBlocks.allIds = t.exerciseBlocks.map(eb => eb._id)
+      newStateExerciseBlocks.allIds = t.exerciseBlocks.map(eb => eb._id)
 
       newState[t._id] = {
         id: t._id,
@@ -41,7 +45,7 @@ const byId = (state = {}, action) => {
         place: t.place,
         date_begin: moment(t.date_begin),
         date_end: moment(t.date_end),
-        exerciseBlocks: newStateEexerciseBlocks
+        exerciseBlocks: newStateExerciseBlocks
       }
     })
     return newState
