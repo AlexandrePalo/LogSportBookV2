@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import datetimepicker from 'eonasdan-bootstrap-datetimepicker'
 import moment from 'moment'
 import { v4 } from 'node-uuid'
-import $ from 'jquery'
+//import $ from 'jquery'
 
 class AddTraining extends Component {
   constructor(props) {
@@ -10,11 +10,13 @@ class AddTraining extends Component {
     this.state = { description: '', place: '', date_begin: moment(), date_end: moment().add(2, 'h') }
   }
   componentDidMount () {
-    $(this.refs.datetimepicker_begin).datetimepicker({
+    const $date1 = $(this.refs.datetimepicker_begin)
+    $date1.datetimepicker({
       format: 'DD/MM/YY HH:mm',
       defaultDate: moment()
     })
-    $(this.refs.datetimepicker_end).datetimepicker({
+    const $date2 = $(this.refs.datetimepicker_end)
+    $date2.datetimepicker({
       format: 'DD/MM/YY HH:mm',
       defaultDate: moment().add(2, 'h')
     })

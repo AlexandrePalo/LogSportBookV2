@@ -21,6 +21,10 @@ module.exports = {
         'BASE_URL_API': JSON.stringify('http://logsportbook-api.alexandrepalo.com'),
       }
     }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    })
   ],
 
   module: {
@@ -29,7 +33,7 @@ module.exports = {
       loader: 'babel',
       query: {
         presets: ['react', 'es2015', 'stage-1']
-      }
+      },
     },
     ]
   },
