@@ -13,7 +13,8 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env':{
-        'NODE_ENV': JSON.stringify('dev')
+        'VERSION': JSON.stringify('0.1.0'),
+        'NODE_ENV': JSON.stringify('dev'),
         'CLIENT_ID': JSON.stringify('yoZpCbGsAxzrisPVmskO1h4UPliN6wl6'),
         'BASE_URL_AUTH0': JSON.stringify('https://lsb.eu.auth0.com'),
         'BASE_AUTH0': JSON.stringify('lsb.eu.auth0.com'),
