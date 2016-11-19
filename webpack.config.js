@@ -18,7 +18,7 @@ module.exports = {
         'CLIENT_ID': JSON.stringify('yoZpCbGsAxzrisPVmskO1h4UPliN6wl6'),
         'BASE_URL_AUTH0': JSON.stringify('https://lsb.eu.auth0.com'),
         'BASE_AUTH0': JSON.stringify('lsb.eu.auth0.com'),
-        'BASE_URL_API': JSON.stringify('http://logsportbook.alexandrepalo.com/api'),
+        'BASE_URL_API': JSON.stringify('http://logsportbook-api.alexandrepalo.com'),
       }
     }),
   ],
