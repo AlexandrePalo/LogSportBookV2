@@ -29,6 +29,7 @@ class TrainingBoard extends Component {
                 {props.exerciseBlocks.map((e) => {
                   return (
                     <ExerciseBlock
+                      isEdited={(props.params.exerciseBlock === e.id) ? true : false}
                       key={e.id}
                       exercise={e.exercise}
                       numberSeries={e.series.allIds.length}
