@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import datetimepicker from 'eonasdan-bootstrap-datetimepicker'
 import moment from 'moment'
 import { v4 } from 'node-uuid'
-//import $ from 'jquery'
 
 class AddTraining extends Component {
   constructor(props) {

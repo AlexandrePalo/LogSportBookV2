@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import Training from '../containers/Training'
 import moment from 'moment'
 import Chart from 'chart.js'
-import { v4 } from 'node-uuid'
 import AddTraining from '../containers/AddTraining'
 import LineChart from '../containers/LineChart'
 
@@ -34,7 +34,8 @@ class MyAccount extends Component {
           <div className='col-md-8'>
             <div className="panel panel-primary">
               <div className="panel-heading">
-                <h3 className="panel-title">Derniers entraînements (voir plus)</h3>
+                <div className="panel-title"><h3 className="panel-title">Derniers entraînements</h3>
+                <Link to='/trainings'><i className="fa fa-search-plus" aria-hidden="true"></i> Liste complète</Link></div>
               </div>
               <table className='table table-striped table-hover'>
                 <thead>

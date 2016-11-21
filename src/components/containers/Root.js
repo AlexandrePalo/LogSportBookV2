@@ -7,6 +7,8 @@ import MyAccountL from './MyAccount'
 import TrainingBoardL from './TrainingBoard'
 import ExerciseBlockBoardL from './ExerciseBlockBoard'
 
+import ListingTrainingsL from './ListingTrainings'
+
 import LayoutBegin from '../presentationals/LayoutBegin'
 import Begin from '../presentationals/Begin'
 import LogOrCreate from '../presentationals/LogOrCreate'
@@ -40,6 +42,7 @@ class Root extends Component {
           <Route path='/' component={Layout} auth={auth}>
 
             <IndexRoute component={MyAccountL} onEnter={requireAuth}/>
+            <Route path='/trainings' component={ListingTrainingsL}/>
             <Route path='/trainings/:training' component={TrainingBoardL}>
               <IndexRoute/>
               <Route path='/trainings/:training/exerciseblocks/:exerciseBlock'
