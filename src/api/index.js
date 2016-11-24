@@ -39,8 +39,15 @@ export const fetchProfile = (accessToken) =>
     return response.json()
   })
 
-export const fetchTrainings = (userId) =>
-  fetch(baseUrlApi + '/trainings?user=' + userId).then(function(response) {
+export const fetchTrainings = (userId, search=undefined, from=undefined, to=undefined) =>
+  fetch(baseUrlApi + '/trainings?' + ((userId, search=undefined, from=undefined, to=undefined) => {
+    let params = { user: userId }
+    search && (params['search'] = search)
+    from && (params['from'] = from.format())
+    to && (params['to'] = to.format())
+    return $.param(params)
+  })(userId, search, from, to))
+  .then(function(response) {
     return response.json().then(function(json) {
       return json
     })

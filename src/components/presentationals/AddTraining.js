@@ -12,11 +12,13 @@ class AddTraining extends Component {
     const $date1 = $(this.refs.datetimepicker_begin)
     $date1.datetimepicker({
       format: 'DD/MM/YY HH:mm',
+      locale: 'fr',
       defaultDate: moment()
     })
     const $date2 = $(this.refs.datetimepicker_end)
     $date2.datetimepicker({
       format: 'DD/MM/YY HH:mm',
+      locale: 'fr',
       defaultDate: moment().add(2, 'h')
     })
   }

@@ -30,5 +30,11 @@ module.exports = {
         ],
         "no-unused-vars": 0,
         "no-console": 0
+    },
+    "globals": {
+      "window": true,
+      "process": true,
+      "$": true,
+      "moment": true,
     }
 };

@@ -10,9 +10,9 @@ const receiveExercises = (response) => ({
   response
 })
 
-export const fetchTrainings = (userId) => (dispatch) => {
+export const fetchTrainings = (userId, search=undefined, from=undefined, to=undefined) => (dispatch) => {
   dispatch(requestTrainings())
-  return api.fetchTrainings(userId).then(response => {
+  return api.fetchTrainings(userId, search, from, to).then(response => {
     dispatch(receiveTrainings(response))
   })
 }

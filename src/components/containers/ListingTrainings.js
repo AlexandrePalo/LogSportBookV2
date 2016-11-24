@@ -15,8 +15,8 @@ class ListingTrainingsL extends Component {
   }
 
   render () {
-    let { ...rest } = this.props
-    return <ListingTrainings searchData={this.fetchData} {...rest}/>
+    let { fetchTrainings, ...rest } = this.props
+    return <ListingTrainings fetchData={fetchTrainings} {...rest}/>
   }
 }
 

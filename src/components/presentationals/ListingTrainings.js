@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import Training from '../containers/Training'
-import moment from 'moment'
+import { throttle } from 'lodash'
 
 class ListingTrainings extends Component {
 
   constructor (props, context) {
     super(props)
+    this.fetchData = this.fetchData.bind(this)
     this.state = {
-      search: '',
-      date_end: moment(),
-      date_begin: moment(),
       allDates: true
     }
   }
@@ -19,18 +17,28 @@ class ListingTrainings extends Component {
       const $date1 = $(this.refs.datetimepicker_begin)
       $date1.datetimepicker({
         format: 'DD/MM/YY',
-        defaultDate: this.state.date_begin
+        locale: 'fr',
+        defaultDate: moment()
       })
     }
     if (!this.state.allDates) {
       const $date2 = $(this.refs.datetimepicker_end)
       $date2.datetimepicker({
         format: 'DD/MM/YY',
-        defaultDate: this.state.date_end
+        locale: 'fr',
+        defaultDate: moment()
       })
     }
   }
 
+  fetchData () {
+    this.props.fetchData(
+      this.props.userId,
+      this.search.value,
+      !this.state.allDates && moment(this.date_begin.value, 'DD/MM/YY'),
+      !this.state.allDates && moment(this.date_end.value, 'DD/MM/YY')
+    )
+  }
   render () {
     const style = {
       label: {
@@ -51,16 +59,17 @@ class ListingTrainings extends Component {
                 <form className="form-inline">
                   <div className="form-group">
                     <label className="sr-only" htmlFor="inputSearch">Recherche</label>
-                    <input type="text" className="form-control" id="inputSearch" placeholder="Recherche" onChange={(e) => {
-                      this.setState({ search: e.target.value })
-                      console.log(this.state.search)
-                    }}/>
+                    <input type="text" className="form-control" id="inputSearch" placeholder="Recherche"
+                      ref={ node => { this.search = node }} onChange={ (e) => {
+                        this.fetchData()
+                      }}/>
                   </div>
                   <div className="checkbox">
                     <label style={style.label}>
-                      <input type="checkbox" checked={this.state.allDates} ref='allDates' onChange={(e) => {
-                        this.setState({ allDates: this.refs.allDates.checked })
-                      }}/> Toutes les dates
+                      <input type="checkbox" checked={this.state.allDates}
+                        onChange={(e) => {
+                          this.setState({ allDates: e.target.checked})
+                        }}/> Toutes les dates
                     </label>
                   </div>
                   {!this.state.allDates && (
@@ -68,8 +77,9 @@ class ListingTrainings extends Component {
                       <label htmlFor='date_begin' style={style.label}>De :</label>
                       <div className='input-group date' ref='datetimepicker_begin' >
                         <input type='text' className="form-control"
-                        onBlur={(e) => this.setState({ date_begin: moment(e.target.value, 'DD/MM/YY HH:mm') })}
-                        />
+                          ref={ node => { this.date_begin = node }} onBlur={(e) => {
+                            this.fetchData()
+                          }}/>
                         <span className="input-group-addon">
                           <span className="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -81,8 +91,9 @@ class ListingTrainings extends Component {
                       <label htmlFor='date_end' style={style.label}>à :</label>
                       <div className='input-group date' ref='datetimepicker_end'>
                         <input type='text' className="form-control"
-                        onBlur={(e) => this.setState({ date_end: moment(e.target.value, 'DD/MM/YY HH:mm') })}
-                        />
+                          ref={ node => { this.date_end = node }} onBlur={(e) => {
+                            this.fetchData()
+                          }}/>
                         <span className="input-group-addon">
                           <span className="glyphicon glyphicon-calendar"></span>
                         </span>
