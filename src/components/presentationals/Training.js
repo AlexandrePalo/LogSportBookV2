@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import DeleteWithConfirmation from './DeleteWithConfirmation'
 
 export default class Training extends Component {
   render () {
@@ -18,9 +19,11 @@ export default class Training extends Component {
         <td>{props.number_exerciseBlocks}</td>
         <td>{props.duration.hours()}h{(props.duration.minutes() === 0) ? '' : props.duration.minutes()}</td>
         <td>
-        <i className="fa fa-trash" aria-hidden="true" onClick={() =>
-          props.removeTraining(props.id)
-        }></i>
+          <DeleteWithConfirmation
+            remove={() => props.removeTraining(props.id)}
+            id={props.id}
+            label="l'entrainement"
+          />
         </td>
       </tr>
     )

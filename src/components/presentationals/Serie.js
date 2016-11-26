@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import DeleteWithConfirmation from './DeleteWithConfirmation'
 
 export default class Serie extends Component {
   render () {
@@ -9,9 +10,11 @@ export default class Serie extends Component {
         <td>{props.repetitions}</td>
         <td>{props.load}</td>
         <td>
-        <i className="fa fa-trash" aria-hidden="true" onClick={() =>
-          props.removeSerie(props.id, props.training, props.exerciseBlock)
-        }></i>
+          <DeleteWithConfirmation
+            remove={() => props.removeSerie(props.id, props.training, props.exerciseBlock)}
+            id={props.id}
+            label="la série"
+          />
         </td>
       </tr>
     )

@@ -48,7 +48,6 @@ export const fetchTrainings = (userId, limit=undefined, order='date_end', search
       search && (params['search'] = search)
       from && (params['from'] = from.format())
       to && (params['to'] = to.format())
-      console.log(params)
       return $.param(params)
     })(userId, limit, order, search, from, to))
   .then(function(response) {

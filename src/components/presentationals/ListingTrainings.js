@@ -40,6 +40,7 @@ class ListingTrainings extends Component {
       !this.state.allDates && moment(this.date_end.value, 'DD/MM/YY')
     )
   }
+
   render () {
     const style = {
       label: {

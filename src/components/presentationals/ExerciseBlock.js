@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import DeleteWithConfirmation from './DeleteWithConfirmation'
 
 export default class ExerciseBlock extends Component {
   render () {
@@ -21,10 +22,12 @@ export default class ExerciseBlock extends Component {
         <td>{props.exercise.name}</td>
         <td>{props.numberSeries}</td>
         <td>{props.duration}</td>
-        <td
-          onClick={() =>
-            props.removeExerciseBlock(props.id, props.training)
-          }><i className="fa fa-trash" aria-hidden="true"></i>
+        <td>
+          <DeleteWithConfirmation
+            remove={() => props.removeExerciseBlock(props.id, props.training)}
+            id={props.id}
+            label="l'exercice"
+          />
         </td>
       </tr>
     )
