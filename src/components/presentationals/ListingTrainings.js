@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Training from '../containers/Training'
-import { throttle } from 'lodash'
 
 class ListingTrainings extends Component {
 
