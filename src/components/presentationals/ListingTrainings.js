@@ -34,6 +34,8 @@ class ListingTrainings extends Component {
   fetchData () {
     this.props.fetchData(
       this.props.userId,
+      null,
+      null,
       this.search.value,
       !this.state.allDates && moment(this.date_begin.value, 'DD/MM/YY'),
       !this.state.allDates && moment(this.date_end.value, 'DD/MM/YY')

@@ -65,7 +65,6 @@ moment.locale('fr', {
         doy : 4  // The week that contains Jan 4th is the first week of the year.
     }
 });
-console.log(moment.locale())
 window.moment = moment
 
 

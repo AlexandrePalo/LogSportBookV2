@@ -11,7 +11,7 @@ class MyAccountL extends Component {
 
   fetchData () {
     const { fetchTrainings, userId, fetchUser } = this.props
-    fetchTrainings(userId)
+    fetchTrainings(userId, 5)
   }
 
   render () {

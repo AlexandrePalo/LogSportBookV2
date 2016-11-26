@@ -39,14 +39,18 @@ export const fetchProfile = (accessToken) =>
     return response.json()
   })
 
-export const fetchTrainings = (userId, search=undefined, from=undefined, to=undefined) =>
-  fetch(baseUrlApi + '/trainings?' + ((userId, search=undefined, from=undefined, to=undefined) => {
-    let params = { user: userId }
-    search && (params['search'] = search)
-    from && (params['from'] = from.format())
-    to && (params['to'] = to.format())
-    return $.param(params)
-  })(userId, search, from, to))
+export const fetchTrainings = (userId, limit=undefined, order='date_end', search=undefined, from=undefined, to=undefined) =>
+  fetch(baseUrlApi + '/trainings?' + (
+    (userId, limit=undefined, order=undefined , search=undefined, from=undefined, to=undefined) => {
+      let params = { user: userId }
+      limit && (params['limit'] = limit)
+      order && (params['order'] = order)
+      search && (params['search'] = search)
+      from && (params['from'] = from.format())
+      to && (params['to'] = to.format())
+      console.log(params)
+      return $.param(params)
+    })(userId, limit, order, search, from, to))
   .then(function(response) {
     return response.json().then(function(json) {
       return json
