@@ -16,6 +16,7 @@ import LogOrCreate from '../presentationals/LogOrCreate'
 import Settings from './Settings'
 
 import AuthService from '../../utils/AuthService'
+import Error404 from '../presentationals/Error404'
 
 const auth = new AuthService(process.env.CLIENT_ID, process.env.BASE_AUTH0)
 
@@ -50,7 +51,11 @@ class Root extends Component {
                 onEnter={requireAuth}/>
             </Route>
             <Route path='settings' component={Settings} onEnter={requireAuth}/>
+            <Route path='*' component={Error404} onEnter={requireAuth}/>
           </Route>
+
+
+
         </Router>
       </Provider>
     )
