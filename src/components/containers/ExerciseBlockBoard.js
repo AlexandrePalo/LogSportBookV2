@@ -7,11 +7,6 @@ import * as actions from '../../actions/index'
 
 class ExerciseBlockBoardL extends Component {
 
-  componentDidMount () {
-    const { fetchSeries } = this.props
-    fetchSeries(this.props.params.training, this.props.params.exerciseBlock)
-  }
-
   render () {
     let { ...rest } = this.props
     return <ExerciseBlockBoard {...rest}/>

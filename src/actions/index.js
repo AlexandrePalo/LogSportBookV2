@@ -17,13 +17,22 @@ export const fetchTrainings = (userId, limit=undefined, order='date_end', search
   })
 }
 
-const receiveTrainings = (response) => ({
+export const fetchTrainingsFirst = (userId) => (dispatch) => {
+  dispatch(requestTrainings(true))
+  return api.fetchTrainings(userId).then(response => {
+    dispatch(receiveTrainings(response, true))
+  })
+}
+
+const receiveTrainings = (response, first=false) => ({
   type: 'RECEIVE_TRAININGS',
-  response
+  response,
+  first
 })
 
-const requestTrainings = () => ({
-  type: 'REQUEST_TRAININGS'
+const requestTrainings = (first = false) => ({
+  type: 'REQUEST_TRAININGS',
+  first
 })
 
 export const fetchSeries = (trainingId, exerciseBlockId) => (dispatch) => {

@@ -9,6 +9,22 @@ const byId = (state = {}, action) => {
     action.response.forEach((t) => {
       var newStateExerciseBlocks = {byId: {}, allIds: []}
       t.exerciseBlocks.forEach((eb) => {
+        var newStateSeries = {byId: {}, allIds: []}
+        eb.series.forEach((serie) => {
+          newStateSeries.byId = {
+            ...newStateSeries.byId,
+            [serie._id]: {
+              id: serie._id,
+              isFetching: false,
+              repetitions: serie.repetitions,
+              load: serie.load,
+              index: serie.index
+            }
+          }
+        })
+        newStateSeries.allIds = eb.series.map(serie => serie._id)
+        newStateSeries.isFetching = false
+
         newStateExerciseBlocks.byId = {
           ...newStateExerciseBlocks.byId,
           [eb._id]: {
@@ -22,11 +38,7 @@ const byId = (state = {}, action) => {
             date_begin: moment(eb.date_begin),
             date_end: moment(eb.date_end),
             index: eb.index,
-            series: {
-              byId: {},
-              allIds: [],
-              isFetching: false
-            }
+            series: newStateSeries
           }
         }
       })
