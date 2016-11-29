@@ -118,7 +118,7 @@ const isFetching = (state = false, action) => {
 }
 
 export const getAllTrainings = (state) => {
-  return state.allIds.map(id => state.byId[id])
+  return state.allIds.map(id => state.byId[id]).reverse()
 }
 
 export const getVisibleTraining = (state, filter) => {
